@@ -29,3 +29,4 @@ SFMLGame/imgui.ini
 /.vs
 .vs/SFMLGame/v17/ipch/AutoPCH/bf1ecba5200adc52/SCENE_ZELDA.ipch
 *.ipch
+.vs/SFMLGame/v17/Browse.VC.db
