@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|solutionrelative:SFMLGame\\Scene_Zelda.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Scene_Zelda.cpp",
+              "DocumentMoniker": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.cpp",
+              "RelativeDocumentMoniker": "SFMLGame\\Scene_Zelda.cpp",
+              "ToolTip": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.cpp",
+              "RelativeToolTip": "SFMLGame\\Scene_Zelda.cpp",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-08T22:41:23.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+Movement
+--------
+1) allow for 8 directional movement
+2) use input system to spawn bullets based on current look direction
+3) impliment super weapon (my sneeze)
+
+Collision
+--------
+1) add bullet collision
+
+Level Loader
+--------
+1) fully incorporate JSON file loading
+2) impliment memory pooling (this will be used for bullets to keep down on lag)
+
+Assets
+--------
+1) properly clip and resize assets for game if needed
+2) create particle systems
+3) find sound assets for the game
+4) change look/location of health bar

@@ -1,0 +1,12 @@
+*.ipch
+*.opendb
+*.vsidx
+.vs/GameEngineFinal/v17/.suo
+*.db
+*.db-shm
+*.db-wal
+*.vsidx
+.vs/SFMLGame/FileContentIndex/722764c9-7a73-4d21-96b2-b3920118459f.vsidx
+/.vs/SFMLGame/v17
+.vs/SFMLGame/v17/.suo
+*.db
