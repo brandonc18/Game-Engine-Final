@@ -90,6 +90,7 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
         if (e->tag() == "player")
             e->add<CState>();
     }
+    spawnPlayer();
 }
 
 void Scene_Zelda::loadLevel(const string &filename) {
