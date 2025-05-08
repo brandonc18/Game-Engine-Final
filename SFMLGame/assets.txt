@@ -1,0 +1,76 @@
+Font Techfont fonts\Techfont.ttf
+Texture RunDown textures\RunDown.png
+Texture RunRight textures\RunRight.png
+Texture RunUp textures\RunUp.png
+Texture StandDown textures\StandDown.png
+Texture StandRight textures\StandRight.png
+Texture StandUp textures\StandUp.png
+Texture AtkDown textures\AtkDown.png
+Texture AtkUp textures\AtkUp.png
+Texture AtkRight textures\AtkRight.png
+Texture SwordUp textures\SwordUp.png
+Texture SwordDown textures\SwordDown.png
+Texture SwordRight textures\SwordRight.png
+Texture Armos textures\Armos.png
+Texture Tektite textures\Tektite.png
+Texture Heart textures\Heart.png
+Texture Explosion textures\explosion.png
+Texture Black textures\Black.png
+Texture RockBL textures\RockBL.png
+Texture RockBM textures\RockBM.png
+Texture RockBR textures\RockBR.png
+Texture RockTL textures\RockTL.png
+Texture RockTM textures\RockTM.png
+Texture RockTR textures\RockTR.png
+Texture WaterTR textures\WaterTR.png
+Texture WaterTM textures\WaterTM.png
+Texture WaterTL textures\WaterTL.png
+Texture WaterBR textures\WaterBR.png
+Texture WaterBM textures\WaterBM.png
+Texture WaterBL textures\WaterBL.png
+Texture WaterMR textures\WaterMR.png
+Texture WaterM textures\WaterM.png
+Texture WaterML textures\WaterML.png
+Texture Bush textures\Bush.png
+Animation RunDown RunDown 2 15
+Animation RunRight RunRight 2 15
+Animation RunUp RunUp 2 15
+Animation StandDown StandDown 1 0
+Animation StandRight StandRight 1 0
+Animation StandUp StandUp 1 0
+Animation AtkDown AtkDown 1 0
+Animation AtkUp AtkUp 1 0
+Animation AtkRight AtkRight 1 0
+Animation SwordDown SwordDown 1 0
+Animation SwordUp SwordUp 1 0
+Animation SwordRight SwordRight 1 0
+Animation Armos Armos 2 10
+Animation Tektite Tektite 2 10
+Animation Heart Heart 1 0
+Animation Explosion Explosion 3 5
+Animation Black Black 1 0
+Animation RockBL RockBL 1 0
+Animation RockBM RockBM 1 0
+Animation RockBR RockBR 1 0
+Animation RockTL RockTL 1 0
+Animation RockTM RockTM 1 0
+Animation RockTR RockTR 1 0
+Animation WaterTR WaterTR 1 0
+Animation WaterTM WaterTM 1 0
+Animation WaterTL WaterTL 1 0
+Animation WaterMR WaterMR 1 0
+Animation WaterM WaterM 1 0
+Animation WaterML WaterML 1 0
+Animation WaterBR WaterBR 1 0
+Animation WaterBM WaterBM 1 0
+Animation WaterBL WaterBL 1 0
+Animation Bush Bush 1 0
+Sound EnemyDie sounds\LOZ_Enemy_Die.wav
+Sound EnemyHit sounds\LOZ_Enemy_Hit.wav
+Sound GetHeart sounds\LOZ_Get_Heart.wav
+Sound GetItem sounds\LOZ_Get_Item.wav
+Sound LinkDie sounds\LOZ_Link_Die.wav
+Sound LinkHurt sounds\LOZ_Link_Hurt.wav
+Sound Slash sounds\LOZ_Sword_Slash.wav
+Sound Title sounds\title.ogg
+Sound Music sounds\music.ogg

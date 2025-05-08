@@ -1,0 +1,775 @@
+{
+    "entities": [
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 386.90899658203125,
+                    "y": 352.0
+                },
+                {
+                    "name": "StandDown",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": true,
+                    "move": true,
+                    "type": "CBoundingBox",
+                    "vision": true,
+                    "x": 48.0,
+                    "y": 48.0
+                },
+                {
+                    "current": 8,
+                    "exists": true,
+                    "max": 8,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": true,
+                    "speed": 5.091000080108643,
+                    "type": "CInput"
+                }
+            ],
+            "id": 0,
+            "tag": "player"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 288.0,
+                    "y": 544.0
+                },
+                {
+                    "name": "StandDown",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 1,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 544.0,
+                    "y": 416.0
+                },
+                {
+                    "name": "StandDown",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 2,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 32.0,
+                    "y": 736.0
+                },
+                {
+                    "name": "Bush",
+                    "type": "CAnimation"
+                },
+                {
+                   "exists": true,
+                    "move": true,
+                    "type": "CBoundingBox",
+                    "vision": false,
+                    "x": 63.0,
+                    "y": 63.0
+
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 3,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 96.0,
+                    "y": 736.0
+                },
+                {
+                    "name": "Bush",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 4,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 160.0,
+                    "y": 736.0
+                },
+                {
+                    "name": "Bush",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 5,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 288.0,
+                    "y": 736.0
+                },
+                {
+                    "name": "Bush",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 6,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 224.0,
+                    "y": 736.0
+                },
+                {
+                    "name": "Bush",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 7,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 608.0,
+                    "y": 672.0
+                },
+                {
+                    "name": "Bush",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 8,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 160.0,
+                    "y": 224.0
+                },
+                {
+                    "name": "RockBM",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 9,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 480.0,
+                    "y": 224.0
+                },
+                {
+                    "name": "RockBM",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 10,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 96.0,
+                    "y": 224.0
+                },
+                {
+                    "name": "RockBL",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 11,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 608.0,
+                    "y": 160.0
+                },
+                {
+                    "name": "RockBL",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 12,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 224.0,
+                    "y": 224.0
+                },
+                {
+                    "name": "RockBR",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 13,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 352.0,
+                    "y": 224.0
+                },
+                {
+                    "name": "RockBR",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 14,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 96.0,
+                    "y": 160.0
+                },
+                {
+                    "name": "RockTL",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 15,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 480.0,
+                    "y": 160.0
+                },
+                {
+                    "name": "RockTL",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 16,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 160.0,
+                    "y": 160.0
+                },
+                {
+                    "name": "RockBM",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 17,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 608.0,
+                    "y": 160.0
+                },
+                {
+                    "name": "RockBM",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 18,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 224.0,
+                    "y": 160.0
+                },
+                {
+                    "name": "RockTR",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 19,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 288.0,
+                    "y": 544.0
+                },
+                {
+                    "name": "RockTR",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 20,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 288.0,
+                    "y": 480.0
+                },
+                {
+                    "name": "RockTR",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 21,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 160.0,
+                    "y": 416.0
+                },
+                {
+                    "name": "RockTR",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": false,
+                    "type": "CBoundingBox"
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 22,
+            "tag": "tile"
+        }
+    ]
+}
