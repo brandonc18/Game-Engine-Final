@@ -30,3 +30,6 @@ SFMLGame/imgui.ini
 .vs/SFMLGame/v17/ipch/AutoPCH/bf1ecba5200adc52/SCENE_ZELDA.ipch
 *.ipch
 .vs/SFMLGame/v17/Browse.VC.db
+*.tlog
+*.tlog
+SFMLGame/x64/Release/SFMLGame.tlog/CL.write.1.tlog
