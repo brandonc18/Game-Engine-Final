@@ -38,7 +38,7 @@
                 }
             ],
             "id": 0,
-            "tag": "tile"
+            "tag": "player"
         },
         {
             "components": [

@@ -112,7 +112,7 @@ class CState : public Component
 public:
 	CState() = default;
 	CState(const string& s) : state(s) {}
-	string state = "jumping";
+	string state = "StandDown";
 };
 
 class CChasePlayer : public Component

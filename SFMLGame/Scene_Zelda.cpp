@@ -70,10 +70,10 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
         //if (animationName == "Black")
             //teleportTiles.push_back(e);
         e->add<CTransform>(Vec2f(j["entities"][i]["components"][0]["x"], j["entities"][i]["components"][0]["y"]), Vec2f(j["entities"][i]["components"][0]["scaleX"], j["entities"][i]["components"][0]["scaleY"]));
+        e->get<CTransform>().prevPos = e->get<CTransform>().pos;
         if (j["entities"][i]["components"][2]["exists"])
         {
             e->add<CBoundingBox>(Vec2f(j["entities"][i]["components"][2]["x"], j["entities"][i]["components"][2]["y"]), j["entities"][i]["components"][2]["move"], j["entities"][i]["components"][2]["vision"]);
-            e->get<CTransform>().prevPos = e->get<CTransform>().pos;
         }
         if (j["entities"][i]["components"][3]["exists"])
         {
@@ -90,7 +90,6 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
         if (e->tag() == "player")
             e->add<CState>();
     }
-    spawnPlayer();
 }
 
 void Scene_Zelda::loadLevel(const string &filename) {
@@ -817,7 +816,6 @@ void Scene_Zelda::sAnimation() {
         }
     }
   }
-
   if (player()->get<CAnimation>().animation.getName() != player()->get<CState>().state) {
       player()->add<CAnimation>(game->getAssets().getAnimation(player()->get<CState>().state), true);
   }

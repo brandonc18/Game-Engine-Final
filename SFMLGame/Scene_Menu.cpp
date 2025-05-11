@@ -26,11 +26,11 @@ void Scene_Menu::init()
 	menuStrings.push_back("Level 1");
 	menuStrings.push_back("Level 2");
 	menuStrings.push_back("Level 3");
-	menuStrings.push_back("Level Editor");
+	menuStrings.push_back("Level Edited");
 	levelPaths.push_back("Level1.txt");
 	levelPaths.push_back("Level2.txt");
 	levelPaths.push_back("Level3.txt");
-	levelPaths.push_back("LevelEditor.json");
+	levelPaths.push_back("LevelEdited.json");
 
 	game->getAssets().getSound("Title").play();
 	game->getAssets().getSound("Title").setLoop(1);
@@ -62,7 +62,7 @@ void Scene_Menu::sDoAction(const Action& action)
 		else if (action.getName() == "EDIT") 
 		{
 			game->getAssets().getSound("Title").stop();
-			game->changeScene("EDIT", new Scene_LevelEditor(game, levelPaths[selectedMenuIndex]));
+			game->changeScene("EDIT", new Scene_LevelEditor(game, "LevelEditor.json"));
 		}
 		else if (action.getName() == "QUIT")
 		{
