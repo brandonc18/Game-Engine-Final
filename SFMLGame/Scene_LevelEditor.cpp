@@ -81,6 +81,31 @@ void Scene_LevelEditor::outputJSONFile()
 		{
 			j["entities"][count]["components"].push_back({ {"exists", false}, { "type", "CDamage" } });
 		}
+        if (e->has<CChasePlayer>())
+        {
+            auto& chase = e->get<CChasePlayer>();
+            j["entities"][count]["components"].push_back({ {"exists", true}, {"type", "CChasePlayer"}, {"speed", chase.speed}, {"home", {chase.home.x, chase.home.y} } });
+        }
+        else
+        {
+            j["entities"][count]["components"].push_back({ {"exists", false}, { "type", "CChasePlayer" } });
+        }
+        if (e->has<CPatrol>())
+        {
+            auto& patrol = e->get<CPatrol>();
+            json patrolConfig = { {"exists", true}, {"type", "CPatrol"}, {"speed", patrol.speed} };
+            json positions = json::array();
+            for (auto& pos : patrol.positions)
+            {
+                positions.push_back({ pos.x, pos.y });
+            }
+            patrolConfig["positions"] = positions;
+            j["entities"][count]["components"].push_back(patrolConfig);
+        }
+        else
+        {
+            j["entities"][count]["components"].push_back({ {"exists", false}, { "type", "CPatrol" } });
+        }
 		if (e->has<CInput>())
 		{
 			CInput input = e->get<CInput>();

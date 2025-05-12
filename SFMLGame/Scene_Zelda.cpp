@@ -23,7 +23,7 @@ Scene_Zelda::Scene_Zelda(GameEngine *gameEngine, const string &levelPath) : Scen
 }
 
 void Scene_Zelda::init(const string &levelPath) {
-    if (levelPath == "LevelEditor.json") {
+    if (levelPath == "Level1.json") {
         loadLevelJSON(levelPath);
     }
     else {
@@ -85,7 +85,21 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
         }
         if (j["entities"][i]["components"][5]["exists"])
         {
-            e->add<CInput>(j["entities"][i]["components"][5]["speed"]);
+            e->add<CChasePlayer>(Vec2f(j["entities"][i]["components"][5]["home"][0], j["entities"][i]["components"][5]["home"][1]), j["entities"][i]["components"][5]["speed"]);
+        }
+        if (j["entities"][i]["components"][6]["exists"])
+        {
+            json positionsJson = j["entities"][i]["components"][6]["positions"];
+            vector<Vec2f> positions;
+            for (auto& pos : positionsJson)
+            {
+                positions.push_back(Vec2f(pos[0], pos[1]));
+            }
+            e->add<CPatrol>(positions, j["entities"][i]["components"][6]["speed"]);
+        }
+        if (j["entities"][i]["components"][7]["exists"])
+        {
+            e->add<CInput>(j["entities"][i]["components"][7]["speed"]);
         }
         if (e->tag() == "player")
             e->add<CState>();

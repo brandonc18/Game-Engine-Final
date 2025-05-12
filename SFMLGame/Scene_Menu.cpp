@@ -26,11 +26,9 @@ void Scene_Menu::init()
 	menuStrings.push_back("Level 1");
 	menuStrings.push_back("Level 2");
 	menuStrings.push_back("Level 3");
-	menuStrings.push_back("Level Edited");
-	levelPaths.push_back("Level1.txt");
-	levelPaths.push_back("Level2.txt");
-	levelPaths.push_back("Level3.txt");
+	levelPaths.push_back("Level1.json");
 	levelPaths.push_back("LevelEdited.json");
+	levelPaths.push_back("LevelEditor.json");
 
 	game->getAssets().getSound("Title").play();
 	game->getAssets().getSound("Title").setLoop(1);
