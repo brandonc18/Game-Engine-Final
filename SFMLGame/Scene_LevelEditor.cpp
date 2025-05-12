@@ -4,7 +4,6 @@
 #include "Assets.h"
 #include "Components.h"
 #include "GameEngine.h"
-//#include "Physics.h"
 #include "Scene_Menu.h"
 #include <SFML/OpenGL.hpp>
 #include "imgui/imgui-SFML.h"
@@ -132,6 +131,7 @@ void Scene_LevelEditor::update() {
     {
         sCamera();
         sCreateEntity();
+        sSelectEntity();
         sEntityGUI();
         sGUI();
         sRender();
@@ -166,9 +166,9 @@ void Scene_LevelEditor::sDoAction(const Action& action) {
 }
 
 void Scene_LevelEditor::sCreateEntity() {
-    // Get mouse position in pixel coordinates (relative to the window)
-    sf::Vector2i mousePixelPos = sf::Mouse::getPosition(game->getWindow());
-    sf::Vector2f mouseWorldPos = game->getWindow().mapPixelToCoords(mousePixelPos);
+    // Get mouse position in relation to the window
+    Vec2i mousePixelPos = sf::Mouse::getPosition(game->getWindow());
+    Vec2f mouseWorldPos = game->getWindow().mapPixelToCoords(mousePixelPos);
 
     // Destroy entity if new one is selected in ImGui
     if (selectedAnimationName != "none" && followMouse) {
@@ -179,6 +179,7 @@ void Scene_LevelEditor::sCreateEntity() {
 
     // Create new entity if selected
     if (selectedAnimationName != "none" && !followMouse) {
+        selectedEntity = nullptr;
         followMouse = true;
         movingEntity = entityManager.addEntity("tile");
         movingEntity->add<CAnimation>(game->getAssets().getAnimation(selectedAnimationName), true);
@@ -202,16 +203,54 @@ void Scene_LevelEditor::sCreateEntity() {
     // Remove selected animation as the entity is already created
     selectedAnimationName = "none";
 
-    // Mouse click detection
+    // Left Mouse click detection
     bool isMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
 
     // Check to see if it should place
-    if (isMousePressed && !wasMousePressed && followMouse && movingEntity != nullptr && !ImGui::GetIO().WantCaptureMouse) {
+    if (isMousePressed && !wasLeftMousePressed && followMouse && movingEntity != nullptr && !ImGui::GetIO().WantCaptureMouse) {
+        selectedAnimationName = movingEntity->get<CAnimation>().animation.getName();
         followMouse = false;
         movingEntity = nullptr; // Reset for the next entity
     }
-    wasMousePressed = isMousePressed; // Update state for next frame
+    wasLeftMousePressed = isMousePressed; // Update state for next frame
+
+    // Middle Mouse click detection
+    isMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Middle);
+
+    // Check to see if it should place
+    if (isMousePressed && !wasMiddleMousePressed && followMouse && movingEntity != nullptr && !ImGui::GetIO().WantCaptureMouse) {
+        selectedAnimationName = "none";
+        followMouse = false;
+        movingEntity->destroy();
+        movingEntity = nullptr;
+        selectedEntity = nullptr;
+    }
+    wasMiddleMousePressed = isMousePressed; // Update state for next frame
 }
+
+void Scene_LevelEditor::sSelectEntity() {
+    // Get mouse position in relation to the window
+    Vec2i mousePixelPos = sf::Mouse::getPosition(game->getWindow()); 
+    Vec2f mouseWorldPos = game->getWindow().mapPixelToCoords(mousePixelPos);
+
+    // Middle Mouse click detection
+    bool isMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
+
+    // Check to see if it should place
+    if (isMousePressed && !wasRightMousePressed && !followMouse && !ImGui::GetIO().WantCaptureMouse) {
+        for (int i = 0; i < entityManager.getEntities().size(); i++) {
+            Vec2f entityBBox = entityManager.getEntities()[i]->get<CAnimation>().animation.getSize();
+            Vec2f entityBPos = entityManager.getEntities()[i]->get<CTransform>().pos;
+            if ((entityBPos.x - entityBBox.x / 2) < mouseWorldPos.x && (entityBPos.x + entityBBox.x / 2) > mouseWorldPos.x
+                && (entityBPos.y - entityBBox.y / 2) < mouseWorldPos.y && (entityBPos.y + entityBBox.y / 2) > mouseWorldPos.y) {
+                selectedEntity = entityManager.getEntities()[i];
+                break;
+            }
+        }
+    }
+    wasMiddleMousePressed = isMousePressed; // Update state for next frame
+}
+
 
 Vec2f Scene_LevelEditor::getSnappedPosition(float worldX, float worldY) const {
     // Calculate the room's base position
@@ -250,7 +289,7 @@ void Scene_LevelEditor::sCamera() {
 }
 
 void Scene_LevelEditor::sRender() {
-    game->getWindow().clear(sf::Color(255, 192, 122));
+    game->getWindow().clear(sf::Color(128, 0, 128));
     sf::RectangleShape tick({ 1.0f, 6.0f });
     tick.setFillColor(sf::Color::Black);
 
@@ -517,9 +556,13 @@ void Scene_LevelEditor::sGUI() {
 }
 
 void Scene_LevelEditor::sEntityGUI() {
-    if (movingEntity != nullptr) {
+    if (selectedEntity != nullptr) {
         ImGui::Begin("Entity Properties");
-
+        sf::Sprite sprite = selectedEntity->get<CAnimation>().animation.getSprite();
+        GLuint textureID = sprite.getTexture()->getNativeHandle();
+        ImTextureID imguiTextureID = (void*)(intptr_t)textureID;
+        ImGui::ImageButton(imguiTextureID, ImVec2(64.0, 64.0), ImVec2(0, 0),
+            ImVec2(1.0 / selectedEntity->get<CAnimation>().animation.getFrameCount(), 1.0));
 
         ImGui::End();
     }

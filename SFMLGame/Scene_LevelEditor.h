@@ -16,6 +16,7 @@ protected:
 	void sRender();
 	void onEnd();
 	void sCreateEntity();
+	void sSelectEntity();
 	Vec2f getSnappedPosition(float worldX, float worldY) const;
 
 	int width();
@@ -29,11 +30,14 @@ protected:
 	bool drawGrid = false;
 	bool snapToGrid = false;
 	bool followMouse = false;
-	bool wasMousePressed = false;
+	bool wasLeftMousePressed = false;
+	bool wasMiddleMousePressed = false;
+	bool wasRightMousePressed = false;
 	const Vec2f gridSize = { 64,64 };
 	int roomX = 0;
 	int roomY = 0;
 	Entity* movingEntity = nullptr;
+	Entity* selectedEntity = nullptr;
 	string selectedAnimationName = "none";
 	sf::Text gridText;
 };
