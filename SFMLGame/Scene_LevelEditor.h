@@ -14,6 +14,7 @@ protected:
 	void sGUI();
 	void sRender();
 	void onEnd();
+	void sCreateEntity();
 
 	int width();
 	int height();
@@ -25,7 +26,11 @@ protected:
 	bool drawCollision = false;
 	bool drawGrid = false;
 	bool hitPortalLastFrame = false;
+	bool snapToGrid = false;
 	const Vec2f gridSize = { 64,64 };
+	int roomX = 0;
+	int roomY = 0;
+	string selectedAnimationName = "none";
 	sf::Text gridText;
 };
 

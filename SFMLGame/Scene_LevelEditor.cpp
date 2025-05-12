@@ -33,12 +33,12 @@ void Scene_LevelEditor::init(const string& levelPath) {
     registerAction(sf::Keyboard::Y, "TOGGLE_FOLLOW");
     registerAction(sf::Keyboard::T, "TOGGLE_TEXTURE");
     registerAction(sf::Keyboard::C, "TOGGLE_COLLISION");
-    registerAction(sf::Keyboard::G, "TOGGLE_GRID");/*
+    registerAction(sf::Keyboard::G, "TOGGLE_GRID");
     registerAction(sf::Keyboard::A, "LEFT");
     registerAction(sf::Keyboard::D, "RIGHT");
     registerAction(sf::Keyboard::W, "UP");
     registerAction(sf::Keyboard::S, "DOWN");
-    registerAction(sf::Keyboard::Space, "ATTACK");*/
+    //registerAction(sf::Keyboard::Space, "ATTACK");
 }
 
 void Scene_LevelEditor::outputJSONFile()
@@ -130,6 +130,7 @@ void Scene_LevelEditor::update() {
 
     if (!paused)
     {
+        sCreateEntity();
         sCamera();
         sGUI();
         sRender();
@@ -155,37 +156,34 @@ void Scene_LevelEditor::sDoAction(const Action& action) {
         else if (action.getName() == "PAUSE") { setPaused(!paused); }
         else if (action.getName() == "TOGGLE_FOLLOW") { follow = !follow; }
         else if (action.getName() == "QUIT") { onEnd(); }
+        else if (action.getName() == "LEFT") { roomX -= 1; }
+        else if (action.getName() == "RIGHT") { roomX += 1; }
+        else if (action.getName() == "UP") { roomY -= 1; }
+        else if (action.getName() == "DOWN") { roomY += 1; }
     }
     else if (action.getType() == "END"){}
+}
+
+void Scene_LevelEditor::sCreateEntity() {
+    if (selectedAnimationName != "none") {
+        cout << selectedAnimationName << endl;
+        selectedAnimationName = "none";
+    }
 }
 
 void Scene_LevelEditor::sCamera() {
     // get current view, which we will modify in the if statement
     sf::View view = game->getWindow().getView();
 
-    //if (follow) {
-    //    // calculate view for player follow
-    //    view.setCenter(player()->get<CTransform>().pos);
-    //}
-    //else {
-    //    // calculate view for room-based camera
-    //    Vec2f cameraCenter;
-    //    //get the pixel position for the X axis, start by getting the room the player is in
-    //    float roomX = player()->get<CTransform>().pos.x / game->getWindow().getSize().x;
-    //    if (roomX < 0) { roomX -= 1; }
-    //    roomX = trunc(roomX);
-    //    //find the X mid pixel of the room
-    //    roomX = (roomX * game->getWindow().getSize().x) + (game->getWindow().getSize().x / 2);
+    // calculate view for room-based camera
+    Vec2f cameraCenter;
 
-    //    //get the pixel position for the Y axis, start by getting the room the player is in
-    //    float roomY = player()->get<CTransform>().pos.y / game->getWindow().getSize().y;
-    //    if (roomY < 0) { roomY -= 1; }
-    //    roomY = trunc(roomY);
-    //    //find the Y mid pixel of the room
-    //    roomY = (roomY * game->getWindow().getSize().y) + (game->getWindow().getSize().y / 2);
-    //    //set the view
-    //    view.setCenter(roomX, roomY);
-    //}
+    //find the X mid pixel of the room
+    int x = (roomX * game->getWindow().getSize().x) + (game->getWindow().getSize().x / 2);
+    int y = (roomY * game->getWindow().getSize().y) + (game->getWindow().getSize().y / 2);
+    //set the view
+    view.setCenter(x, y);
+
     // then set the window view
     game->getWindow().setView(view);
 }
@@ -330,7 +328,6 @@ void Scene_LevelEditor::sGUI() {
 
     if (ImGui::BeginTabBar("MyTabBar")) {
         if (ImGui::BeginTabItem("Animations")) {
-            if (ImGui::CollapsingHeader("Animations", ImGuiTreeNodeFlags_None)) {
                 ImGui::Indent();
                 int count = 0;
                 for (auto it = game->getAssets().getAnimationMap().begin(); it != game->getAssets().getAnimationMap().end();
@@ -339,14 +336,17 @@ void Scene_LevelEditor::sGUI() {
                     sf::Sprite sprite = ((Animation)it->second).getSprite();
                     GLuint textureID = sprite.getTexture()->getNativeHandle();
                     ImTextureID imguiTextureID = (void*)(intptr_t)textureID;
-                    ImGui::ImageButton(imguiTextureID, ImVec2(64.0, 64.0), ImVec2(0, 0),
-                        ImVec2(1.0 / ((Animation)it->second).getFrameCount(), 1.0));
+                    if (ImGui::ImageButton(it->first.c_str(), imguiTextureID, ImVec2(64.0, 64.0), ImVec2(0, 0),
+                        ImVec2(1.0 / ((Animation)it->second).getFrameCount(), 1.0))) {
+                        selectedAnimationName = it->first; // Set the selected animation name
+                    }
                     if ((count % 6) != 0) {
                         ImGui::SameLine();
                     }
                 }
+                ImGui::NewLine();
+                ImGui::Checkbox("Snap to Grid", &snapToGrid);
                 ImGui::Unindent();
-            }
 
             ImGui::EndTabItem();
         }
