@@ -30,7 +30,7 @@ void Scene_LevelEditor::init(const string& levelPath) {
 
     registerAction(sf::Keyboard::P, "PAUSE");
     registerAction(sf::Keyboard::Escape, "QUIT");
-    registerAction(sf::Keyboard::Y, "TOGGLE_FOLLOW");
+    registerAction(sf::Keyboard::Z, "SNAP");
     registerAction(sf::Keyboard::T, "TOGGLE_TEXTURE");
     registerAction(sf::Keyboard::C, "TOGGLE_COLLISION");
     registerAction(sf::Keyboard::G, "TOGGLE_GRID");
@@ -130,8 +130,9 @@ void Scene_LevelEditor::update() {
 
     if (!paused)
     {
-        sCreateEntity();
         sCamera();
+        sCreateEntity();
+        sEntityGUI();
         sGUI();
         sRender();
     }
@@ -154,7 +155,7 @@ void Scene_LevelEditor::sDoAction(const Action& action) {
         else if (action.getName() == "TOGGLE_COLLISION") { drawCollision = !drawCollision; }
         else if (action.getName() == "TOGGLE_GRID") { drawGrid = !drawGrid; }
         else if (action.getName() == "PAUSE") { setPaused(!paused); }
-        else if (action.getName() == "TOGGLE_FOLLOW") { follow = !follow; }
+        else if (action.getName() == "SNAP") { snapToGrid = !snapToGrid; }
         else if (action.getName() == "QUIT") { onEnd(); }
         else if (action.getName() == "LEFT") { roomX -= 1; }
         else if (action.getName() == "RIGHT") { roomX += 1; }
@@ -165,10 +166,70 @@ void Scene_LevelEditor::sDoAction(const Action& action) {
 }
 
 void Scene_LevelEditor::sCreateEntity() {
-    if (selectedAnimationName != "none") {
-        cout << selectedAnimationName << endl;
-        selectedAnimationName = "none";
+    // Get mouse position in pixel coordinates (relative to the window)
+    sf::Vector2i mousePixelPos = sf::Mouse::getPosition(game->getWindow());
+    sf::Vector2f mouseWorldPos = game->getWindow().mapPixelToCoords(mousePixelPos);
+
+    // Destroy entity if new one is selected in ImGui
+    if (selectedAnimationName != "none" && followMouse) {
+        followMouse = false;
+        movingEntity->destroy();
+        movingEntity = nullptr; // Reset for the next entity
     }
+
+    // Create new entity if selected
+    if (selectedAnimationName != "none" && !followMouse) {
+        followMouse = true;
+        movingEntity = entityManager.addEntity("tile");
+        movingEntity->add<CAnimation>(game->getAssets().getAnimation(selectedAnimationName), true);
+        if (snapToGrid) {
+            movingEntity->add<CTransform>(getSnappedPosition(mouseWorldPos.x, mouseWorldPos.y));
+        }
+        else {
+            movingEntity->add<CTransform>(Vec2f(mouseWorldPos.x, mouseWorldPos.y));
+        }
+    }
+
+    // Selected Entity movement
+    if (followMouse && movingEntity != nullptr) {
+        if (snapToGrid) {
+            movingEntity->get<CTransform>().pos = getSnappedPosition(mouseWorldPos.x, mouseWorldPos.y);
+        }
+        else {
+            movingEntity->get<CTransform>().pos = Vec2f(mouseWorldPos.x, mouseWorldPos.y);
+        }
+    }
+    // Remove selected animation as the entity is already created
+    selectedAnimationName = "none";
+
+    // Mouse click detection
+    bool isMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+
+    // Check to see if it should place
+    if (isMousePressed && !wasMousePressed && followMouse && movingEntity != nullptr && !ImGui::GetIO().WantCaptureMouse) {
+        followMouse = false;
+        movingEntity = nullptr; // Reset for the next entity
+    }
+    wasMousePressed = isMousePressed; // Update state for next frame
+}
+
+Vec2f Scene_LevelEditor::getSnappedPosition(float worldX, float worldY) const {
+    // Calculate the room's base position
+    float windowX = game->getWindow().getSize().x;
+    float windowY = game->getWindow().getSize().y;
+
+    float roomOffsetX = roomX * windowX;
+    float roomOffsetY = roomY * windowY;
+
+    // Convert world position to tile indices within the room
+    int tileX = int(floor((worldX - roomOffsetX) / 64.0f));
+    int tileY = int(floor((worldY - roomOffsetY) / 64.0f));
+
+    // Calculate the snapped world position (center of the tile)
+    float snappedX = roomOffsetX + tileX * 64.0f + 32.0f;
+    float snappedY = roomOffsetY + tileY * 64.0f + 32.0f;
+
+    return Vec2f(snappedX, snappedY);
 }
 
 void Scene_LevelEditor::sCamera() {
@@ -355,7 +416,6 @@ void Scene_LevelEditor::sGUI() {
             ImGui::Checkbox("Draw Grid", &drawGrid);
             ImGui::Checkbox("Draw Textures", &drawTextures);
             ImGui::Checkbox("Draw Debug", &drawCollision);
-            ImGui::Checkbox("Follow Cam", &follow);
 
             ImGui::EndTabItem();
         }
@@ -455,6 +515,16 @@ void Scene_LevelEditor::sGUI() {
         ImGui::EndTabBar();
     }
 }
+
+void Scene_LevelEditor::sEntityGUI() {
+    if (movingEntity != nullptr) {
+        ImGui::Begin("Entity Properties");
+
+
+        ImGui::End();
+    }
+}
+
 
 void Scene_LevelEditor::onEnd() {
     game->getAssets().getSound("Music").stop();

@@ -12,9 +12,11 @@ protected:
 	void sDoAction(const Action& action);
 	void sCamera();
 	void sGUI();
+	void sEntityGUI();
 	void sRender();
 	void onEnd();
 	void sCreateEntity();
+	Vec2f getSnappedPosition(float worldX, float worldY) const;
 
 	int width();
 	int height();
@@ -25,11 +27,13 @@ protected:
 	bool drawTextures = true;
 	bool drawCollision = false;
 	bool drawGrid = false;
-	bool hitPortalLastFrame = false;
 	bool snapToGrid = false;
+	bool followMouse = false;
+	bool wasMousePressed = false;
 	const Vec2f gridSize = { 64,64 };
 	int roomX = 0;
 	int roomY = 0;
+	Entity* movingEntity = nullptr;
 	string selectedAnimationName = "none";
 	sf::Text gridText;
 };
