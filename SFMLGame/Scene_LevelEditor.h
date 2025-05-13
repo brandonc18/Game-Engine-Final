@@ -26,7 +26,7 @@ protected:
 	string levelPath;
 	bool follow = true;
 	bool drawTextures = true;
-	bool drawCollision = false;
+	bool drawCollision = true;
 	bool drawGrid = false;
 	bool snapToGrid = false;
 	bool followMouse = false;

@@ -183,6 +183,7 @@ void Scene_LevelEditor::sCreateEntity() {
         followMouse = true;
         movingEntity = entityManager.addEntity("tile");
         movingEntity->add<CAnimation>(game->getAssets().getAnimation(selectedAnimationName), true);
+        movingEntity->add<CBoundingBox>(Vec2f(movingEntity->get<CAnimation>().animation.getSize().x, movingEntity->get<CAnimation>().animation.getSize().y));
         if (snapToGrid) {
             movingEntity->add<CTransform>(getSnappedPosition(mouseWorldPos.x, mouseWorldPos.y));
         }
@@ -217,11 +218,13 @@ void Scene_LevelEditor::sCreateEntity() {
     // Middle Mouse click detection
     isMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Middle);
 
-    // Check to see if it should place
-    if (isMousePressed && !wasMiddleMousePressed && followMouse && movingEntity != nullptr && !ImGui::GetIO().WantCaptureMouse) {
+    // Check to see if it should unselect and unfollow
+    if (isMousePressed && !wasMiddleMousePressed) {
         selectedAnimationName = "none";
         followMouse = false;
-        movingEntity->destroy();
+        if (movingEntity != nullptr) {
+            movingEntity->destroy();
+        }
         movingEntity = nullptr;
         selectedEntity = nullptr;
     }
@@ -233,7 +236,7 @@ void Scene_LevelEditor::sSelectEntity() {
     Vec2i mousePixelPos = sf::Mouse::getPosition(game->getWindow()); 
     Vec2f mouseWorldPos = game->getWindow().mapPixelToCoords(mousePixelPos);
 
-    // Middle Mouse click detection
+    // Right Mouse click detection
     bool isMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
 
     // Check to see if it should place
@@ -250,7 +253,6 @@ void Scene_LevelEditor::sSelectEntity() {
     }
     wasMiddleMousePressed = isMousePressed; // Update state for next frame
 }
-
 
 Vec2f Scene_LevelEditor::getSnappedPosition(float worldX, float worldY) const {
     // Calculate the room's base position
@@ -563,7 +565,13 @@ void Scene_LevelEditor::sEntityGUI() {
         ImTextureID imguiTextureID = (void*)(intptr_t)textureID;
         ImGui::ImageButton(imguiTextureID, ImVec2(64.0, 64.0), ImVec2(0, 0),
             ImVec2(1.0 / selectedEntity->get<CAnimation>().animation.getFrameCount(), 1.0));
-
+        ImGui::SliderFloat("Bounding Box x", &selectedEntity->get<CBoundingBox>().size.x, 0, 120);
+        ImGui::SameLine();
+        ImGui::SliderFloat("Bounding Box y", &selectedEntity->get<CBoundingBox>().size.y, 0, 120);
+        if (ImGui::Button("Delete Entity")) { 
+            selectedEntity->destroy();
+            selectedEntity = nullptr;
+        }
         ImGui::End();
     }
 }
@@ -573,6 +581,7 @@ void Scene_LevelEditor::onEnd() {
     game->getAssets().getSound("Music").stop();
     game->getAssets().getSound("Title").play();
     game->getAssets().getSound("Title").setLoop(1);
+    //outputJSONFile();   
     game->changeScene("MENU", new Scene_Menu(game), true);
 }
 
