@@ -10,6 +10,8 @@ protected:
 	void init(const string& levelPath);
 	void update();
 	void sDoAction(const Action& action);
+	void sInput();
+	void sDragAndDrop();
 	void sCamera();
 	void sGUI();
 	void sEntityGUI();
@@ -29,6 +31,7 @@ protected:
 	bool drawCollision = true;
 	bool drawGrid = false;
 	bool snapToGrid = false;
+	bool continuePlacing = false;
 	bool followMouse = false;
 	bool wasLeftMousePressed = false;
 	bool wasMiddleMousePressed = false;
