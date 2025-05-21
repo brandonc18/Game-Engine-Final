@@ -105,7 +105,6 @@ Texture MoleIdleUp textures\MoleIdleUp.png
 Texture MoleWalkDown textures\MoleWalkDown.png
 Texture MoleWalkSide textures\MoleWalkSide.png
 Texture MoleWalkUp textures\MoleWalkUp.png
-
 Texture OrangePotion textures\OrangePotion.png
 Texture PurplePotion textures\PurplePotion.png
 Texture RedPotion textures\RedPotion.png
@@ -117,6 +116,23 @@ Texture SpikesActivate textures\SpikesActivate.png
 Texture SpikesDeactivate textures\SpikesDeactivate.png
 Texture SpikesHit textures\SpikesHit.png
 Texture SpikesIdle textures\SpikesIdle.png
+
+Texture TallCandleLight textures\TallCandleLight.png
+Texture ThrowingSpear textures\ThrowingSpear.png
+Texture TreantIdleDown textures\TreantIdleDown.png
+Texture TreantIdleSide textures\TreantIdleSide.png
+Texture TreantIdleUp textures\TreantIdleUp.png
+Texture TreantWalkDown textures\TreantWalkDown.png
+Texture TreantWalkSide textures\TreantWalkSide.png
+Texture TreantWalkUp textures\TreantWalkUp.png
+Texture TreeDried textures\TreeDried.png
+Texture TreeOrange textures\TreeOrange.png
+Texture TreePink textures\TreePink.png
+Texture Trunk textures\Trunk.png
+Texture UnderGlow textures\UnderGlow.png
+Texture Waterfall textures\Waterfall.png
+Texture YellowPotion textures\YellowPotion.png
+Texture arrow textures\arrow.png
 
 Animation Bonfire Bonfire 4 8
 Animation BrokenTree BrokenTree 1 0
@@ -158,3 +174,19 @@ Animation SpikesActivate SpikesActivate 6 15
 Animation SpikesDeactivate SpikesDeactivate 4 15
 Animation SpikesHit SpikesHit 7 15
 Animation SpikesIdle SpikesIdle 24 5
+Animation TallCandleLight TallCandleLight 3 8
+Animation ThrowingSpear ThrowingSpear 1 0
+Animation TreantIdleDown TreantIdleDown 1 0
+Animation TreantIdleSide TreantIdleSide 1 0
+Animation TreantIdleUp TreantIdleUp 1 0
+Animation TreantWalkDown TreantWalkDown 4 15
+Animation TreantWalkSide TreantWalkSide 4 15
+Animation TreantWalkUp TreantWalkUp 4 15
+Animation TreeDried TreeDried 1 0
+Animation TreeOrange TreeOrange 1 0
+Animation TreePink TreePink 1 0
+Animation Trunk Trunk 1 0
+Animation UnderGlow UnderGlow 1 0
+Animation Waterfall Waterfall 3 5
+Animation YellowPotion YellowPotion 1 0
+Animation arrow arrow 1 0
