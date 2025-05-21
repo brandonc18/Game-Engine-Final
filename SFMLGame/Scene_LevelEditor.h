@@ -10,7 +10,6 @@ protected:
 	void init(const string& levelPath);
 	void update();
 	void sDoAction(const Action& action);
-	void sInput();
 	void sDragAndDrop();
 	bool isPointInside(Entity* e, const Vec2f& point);
 	void sAnimation();
@@ -19,7 +18,6 @@ protected:
 	void sEntityGUI();
 	void sRender();
 	void onEnd();
-	void sCreateEntity();
 	Vec2f getSnappedPosition(float worldX, float worldY) const;
 
 	int width();
@@ -35,10 +33,10 @@ protected:
 	bool continuePlacing = false;
 	bool followMouse = false;
 	bool animate = false;
+	bool selectedAnimation = false;
 	const Vec2f gridSize = { 64,64 };
 	int roomX = 0;
 	int roomY = 0;
-	//Entity* movingEntity = nullptr;
 	Entity* selectedEntity = nullptr;
 	string selectedAnimationName = "none";
 	sf::Text gridText;
