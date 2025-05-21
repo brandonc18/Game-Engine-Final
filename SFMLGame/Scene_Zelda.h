@@ -5,6 +5,7 @@ class Scene_Zelda : public Scene
 	struct PlayerConfig
 	{
 		float X, Y, BX, BY, SPEED, HEALTH;
+		int HP, SPP, STP, INVINCP, INVISP;
 	};
 	struct NPCConfig
 	{
@@ -16,7 +17,7 @@ class Scene_Zelda : public Scene
 	struct Tile {
 		string N;
 		int RX, RY, TX, TY;
-		bool BM, BV;
+		bool BM, BV, M;
 	};
 
 public:
@@ -36,6 +37,7 @@ protected:
 	void sCamera();
 	void sAnimation();
 	void sMovement();
+	void sDash();
 	void sCollision();
 	void sGUI();
 	void sRender();
@@ -60,6 +62,5 @@ protected:
 	bool hitPortalLastFrame = false;
 	const Vec2f gridSize = { 64,64 };
 	sf::Text gridText;
-
 };
 
