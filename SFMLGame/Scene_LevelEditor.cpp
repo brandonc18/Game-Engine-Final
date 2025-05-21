@@ -88,6 +88,7 @@ void Scene_LevelEditor::loadLevelJSON(const string& filename)
         }
         if (e->tag() == "player")
             e->add<CState>();
+        e->add<CDraggable>();
     }
 }
 

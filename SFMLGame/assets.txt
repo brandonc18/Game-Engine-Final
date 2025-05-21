@@ -140,6 +140,7 @@ Texture DarkTile textures\DarkTile.png
 Texture DarkTilePit textures\DarkTilePit.png
 Texture DarkTileSide textures\DarkTileSide.png
 
+
 Animation Bonfire Bonfire 4 8
 Animation BrokenTree BrokenTree 1 0
 Animation Bullet Bullet 1 0
@@ -203,3 +204,45 @@ Animation DarkSmallTiles2 DarkSmallTiles2 1 0
 Animation DarkTile DarkTile 1 0
 Animation DarkTilePit DarkTilePit 1 0
 Animation DarkTileSide DarkTileSide 1 0
+
+Texture DarkBrickDoor textures\DarkBrickDoor.png
+Texture DarkBrickDoor2 textures\DarkBrickDoor2.png
+Texture DarkBrickLargePillar textures\DarkBrickLargePillar.png
+Texture DarkBrickPillar textures\DarkBrickPillar.png
+Texture DarkBrickWall textures\DarkBrickWall.png
+Texture DarkBrickWall2 textures\DarkBrickWall2.png
+Texture DarkBrickWallPillar textures\DarkBrickWallPillar.png
+Texture DarkBrickWindow textures\DarkBrickWindow.png
+Texture Void textures\Void.png
+Texture WallLeft textures\WallLeft.png
+Texture WallRight textures\WallRight.png
+Texture WaterBottom textures\WaterBottom.png
+Texture WaterBottomLeft textures\WaterBottomLeft.png
+Texture WaterBottomRight textures\WaterBottomRight.png
+Texture WaterLeft textures\WaterLeft.png
+Texture WaterMiddle textures\WaterMiddle.png
+Texture WaterRight textures\WaterRight.png
+Texture WaterTop textures\WaterTop.png
+Texture WaterTopLeft textures\WaterTopLeft.png
+Texture WaterTopRight textures\WaterTopRight.png
+
+Animation DarkBrickDoor DarkBrickDoor 1 0
+Animation DarkBrickDoor2 DarkBrickDoor2 1 0
+Animation DarkBrickLargePillar DarkBrickLargePillar 1 0
+Animation DarkBrickPillar DarkBrickPillar 1 0
+Animation DarkBrickWall DarkBrickWall 1 0
+Animation DarkBrickWall2 DarkBrickWall2 1 0
+Animation DarkBrickWallPillar DarkBrickWallPillar 1 0
+Animation DarkBrickWindow DarkBrickWindow 1 0
+Animation Void Void 1 0
+Animation WallLeft WallLeft 1 0
+Animation WallRight WallRight 1 0
+Animation WaterBottom WaterBottom 1 0
+Animation WaterBottomLeft WaterBottomLeft 1 0
+Animation WaterBottomRight WaterBottomRight 1 0
+Animation WaterLeft WaterLeft 1 0
+Animation WaterMiddle WaterMiddle 1 0
+Animation WaterRight WaterRight 1 0
+Animation WaterTop WaterTop 1 0
+Animation WaterTopLeft WaterTopLeft 1 0
+Animation WaterTopRight WaterTopRight 1 0
