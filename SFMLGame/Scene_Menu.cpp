@@ -20,7 +20,7 @@ void Scene_Menu::init()
 	registerAction(sf::Keyboard::E, "EDIT");
 	registerAction(sf::Keyboard::T, "TEST");
 
-	title = "Strange Zelda";
+	title = "Strange Dungeon";
 	menuText.setCharacterSize(36);
 	menuText.setFont(game->getAssets().getFont("Techfont"));
 
@@ -61,7 +61,7 @@ void Scene_Menu::sDoAction(const Action& action)
 		else if (action.getName() == "EDIT") 
 		{
 			game->getAssets().getSound("Title").stop();
-			game->changeScene("EDIT", new Scene_LevelEditor(game, "LevelEditor.json"));
+			game->changeScene("EDIT", new Scene_LevelEditor(game, levelPaths[selectedMenuIndex]));
 		}
 		else if (action.getName() == "TEST")
 		{

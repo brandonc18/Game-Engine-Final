@@ -80,12 +80,11 @@ Texture BrokenTree textures\BrokenTree.png
 Texture Bullet textures\Bullet.png
 Texture BushTall textures\BushTall.png
 Texture BushShort textures\BushShort.png
-Texture CyanPotion textures\CyanPotion.png
+Texture SpeedPotion textures\SpeedPotion.png
 Texture DeathAnimation textures\DeathAnimation.png
 Texture EmptyHeart textures\EmptyHeart.png
 Texture Fire textures\Fire.png
 Texture FullHeart textures\FullHeart.png
-Texture GreenPotion textures\GreenPotion.png
 Texture HeroAttackBack textures\HeroAttackBack.png
 Texture HeroAttackFront textures\HeroAttackFront.png
 Texture HeroAttackSide textures\HeroAttackSide.png
@@ -105,9 +104,9 @@ Texture MoleIdleUp textures\MoleIdleUp.png
 Texture MoleWalkDown textures\MoleWalkDown.png
 Texture MoleWalkSide textures\MoleWalkSide.png
 Texture MoleWalkUp textures\MoleWalkUp.png
-Texture OrangePotion textures\OrangePotion.png
-Texture PurplePotion textures\PurplePotion.png
-Texture RedPotion textures\RedPotion.png
+Texture StrengthPotion textures\StrengthPotion.png
+Texture InvisibilityPotion textures\InvisibilityPotion.png
+Texture HealthPotion textures\HealthPotion.png
 Texture RockMonument textures\RockMonument.png
 Texture Pistol textures\Pistol.png
 Texture Shotgun textures\Shotgun.png
@@ -130,7 +129,7 @@ Texture TreePink textures\TreePink.png
 Texture Trunk textures\Trunk.png
 Texture UnderGlow textures\UnderGlow.png
 Texture Waterfall textures\Waterfall.png
-Texture YellowPotion textures\YellowPotion.png
+Texture InvincibilityPotion textures\InvincibilityPotion.png
 Texture arrow textures\arrow.png
 Texture DarkBrickStairs textures\DarkBrickStairs.png
 Texture DarkBricks textures\DarkBricks.png
@@ -139,72 +138,6 @@ Texture DarkSmallTiles2 textures\DarkSmallTiles2.png
 Texture DarkTile textures\DarkTile.png
 Texture DarkTilePit textures\DarkTilePit.png
 Texture DarkTileSide textures\DarkTileSide.png
-
-
-Animation Bonfire Bonfire 4 8
-Animation BrokenTree BrokenTree 1 0
-Animation Bullet Bullet 1 0
-Animation BushTall BushTall 1 0
-Animation BushShort BushShort 1 0
-Animation DeathAnimation DeathAnimation 3 10
-Animation EmptyHeart EmptyHeart 1 0
-Animation Fire Fire 4 8
-Animation FullHeart FullHeart 1 0
-Animation GreenPotion GreenPotion 1 0
-Animation HeroAttackBack HeroAttackBack 3 15
-Animation HeroAttackFront HeroAttackFront 3 15
-Animation HeroAttackSide HeroAttackSide 3 15
-Animation HeroBowAttackBack HeroBowAttackBack 3 15
-Animation HeroBowAttackFront HeroBowAttackFront 3 15
-Animation HeroBowAttackSide HeroBowAttackSide 3 15
-Animation HeroIdleDown HeroIdleDown 1 0
-Animation HeroIdleSide HeroIdleSide 1 0
-Animation HeroIdleUp HeroIdleUp 1 0
-Animation HeroWalkDown HeroWalkDown 6 15
-Animation HeroWalkSide HeroWalkSide 6 15
-Animation HeroWalkUp HeroWalkUp 6 15
-Animation Longsword Longsword 1 0
-Animation MoleIdleDown MoleIdleDown 1 0
-Animation MoleIdleSide MoleIdleSide 1 0
-Animation MoleIdleUp MoleIdleUp 1 0
-Animation MoleWalkDown MoleWalkDown 4 15
-Animation MoleWalkSide MoleWalkSide 4 15
-Animation MoleWalkUp MoleWalkUp 4 15
-Animation OrangePotion OrangePotion 1 0
-Animation PurplePotion PurplePotion 1 0
-Animation RedPotion RedPotion 1 0
-Animation RockMonument RockMonument 1 0
-Animation Pistol Pistol 1 0
-Animation Shotgun Shotgun 1 0
-Animation SmallCandle SmallCandle 3 8
-Animation SpikesActivate SpikesActivate 6 15
-Animation SpikesDeactivate SpikesDeactivate 4 15
-Animation SpikesHit SpikesHit 7 15
-Animation SpikesIdle SpikesIdle 24 5
-Animation TallCandleLight TallCandleLight 3 8
-Animation ThrowingSpear ThrowingSpear 1 0
-Animation TreantIdleDown TreantIdleDown 1 0
-Animation TreantIdleSide TreantIdleSide 1 0
-Animation TreantIdleUp TreantIdleUp 1 0
-Animation TreantWalkDown TreantWalkDown 4 15
-Animation TreantWalkSide TreantWalkSide 4 15
-Animation TreantWalkUp TreantWalkUp 4 15
-Animation TreeDried TreeDried 1 0
-Animation TreeOrange TreeOrange 1 0
-Animation TreePink TreePink 1 0
-Animation Trunk Trunk 1 0
-Animation UnderGlow UnderGlow 1 0
-Animation Waterfall Waterfall 3 10
-Animation YellowPotion YellowPotion 1 0
-Animation arrow arrow 1 0
-Animation DarkBrickStairs DarkBrickStairs 1 0
-Animation DarkBricks DarkBricks 1 0
-Animation DarkSmallTiles DarkSmallTiles 1 0
-Animation DarkSmallTiles2 DarkSmallTiles2 1 0
-Animation DarkTile DarkTile 1 0
-Animation DarkTilePit DarkTilePit 1 0
-Animation DarkTileSide DarkTileSide 1 0
-
 Texture DarkBrickDoor textures\DarkBrickDoor.png
 Texture DarkBrickDoor2 textures\DarkBrickDoor2.png
 Texture DarkBrickLargePillar textures\DarkBrickLargePillar.png
@@ -225,7 +158,73 @@ Texture WaterRight textures\WaterRight.png
 Texture WaterTop textures\WaterTop.png
 Texture WaterTopLeft textures\WaterTopLeft.png
 Texture WaterTopRight textures\WaterTopRight.png
+Texture Snake textures\Snake.png
+Texture Slime textures\Slime.png
 
+
+Animation Bonfire Bonfire 4 8
+Animation BrokenTree BrokenTree 1 0
+Animation Bullet Bullet 1 0
+Animation BushTall BushTall 1 0
+Animation BushShort BushShort 1 0
+Animation DeathAnimation DeathAnimation 3 10
+Animation EmptyHeart EmptyHeart 1 0
+Animation Fire Fire 4 8
+Animation FullHeart FullHeart 1 0
+Animation HeroAttackBack HeroAttackBack 3 15
+Animation HeroAttackFront HeroAttackFront 3 15
+Animation HeroAttackSide HeroAttackSide 3 15
+Animation HeroBowAttackBack HeroBowAttackBack 3 15
+Animation HeroBowAttackFront HeroBowAttackFront 3 15
+Animation HeroBowAttackSide HeroBowAttackSide 3 15
+Animation HeroIdleDown HeroIdleDown 1 0
+Animation HeroIdleSide HeroIdleSide 1 0
+Animation HeroIdleUp HeroIdleUp 1 0
+Animation HeroWalkDown HeroWalkDown 6 15
+Animation HeroWalkSide HeroWalkSide 6 15
+Animation HeroWalkUp HeroWalkUp 6 15
+Animation Longsword Longsword 1 0
+Animation MoleIdleDown MoleIdleDown 1 0
+Animation MoleIdleSide MoleIdleSide 1 0
+Animation MoleIdleUp MoleIdleUp 1 0
+Animation MoleWalkDown MoleWalkDown 4 15
+Animation MoleWalkSide MoleWalkSide 4 15
+Animation MoleWalkUp MoleWalkUp 4 15
+Animation StrengthPotion StrengthPotion 1 0
+Animation InvisibilityPotion InvisibilityPotion 1 0
+Animation HealthPotion HealthPotion 1 0
+Animation RockMonument RockMonument 1 0
+Animation Pistol Pistol 1 0
+Animation Shotgun Shotgun 1 0
+Animation SmallCandle SmallCandle 3 8
+Animation SpeedPotion SpeedPotion 1 0
+Animation SpikesActivate SpikesActivate 6 15
+Animation SpikesDeactivate SpikesDeactivate 4 15
+Animation SpikesHit SpikesHit 7 15
+Animation SpikesIdle SpikesIdle 24 5
+Animation TallCandleLight TallCandleLight 3 8
+Animation ThrowingSpear ThrowingSpear 1 0
+Animation TreantIdleDown TreantIdleDown 1 0
+Animation TreantIdleSide TreantIdleSide 1 0
+Animation TreantIdleUp TreantIdleUp 1 0
+Animation TreantWalkDown TreantWalkDown 4 15
+Animation TreantWalkSide TreantWalkSide 4 15
+Animation TreantWalkUp TreantWalkUp 4 15
+Animation TreeDried TreeDried 1 0
+Animation TreeOrange TreeOrange 1 0
+Animation TreePink TreePink 1 0
+Animation Trunk Trunk 1 0
+Animation UnderGlow UnderGlow 1 0
+Animation Waterfall Waterfall 3 10
+Animation InvincibilityPotion InvincibilityPotion 1 0
+Animation arrow arrow 1 0
+Animation DarkBrickStairs DarkBrickStairs 1 0
+Animation DarkBricks DarkBricks 1 0
+Animation DarkSmallTiles DarkSmallTiles 1 0
+Animation DarkSmallTiles2 DarkSmallTiles2 1 0
+Animation DarkTile DarkTile 1 0
+Animation DarkTilePit DarkTilePit 1 0
+Animation DarkTileSide DarkTileSide 1 0
 Animation DarkBrickDoor DarkBrickDoor 1 0
 Animation DarkBrickDoor2 DarkBrickDoor2 1 0
 Animation DarkBrickLargePillar DarkBrickLargePillar 1 0
@@ -246,3 +245,5 @@ Animation WaterRight WaterRight 1 0
 Animation WaterTop WaterTop 1 0
 Animation WaterTopLeft WaterTopLeft 1 0
 Animation WaterTopRight WaterTopRight 1 0
+Animation Snake Snake 1 0
+Animation Slime Slime 1 0
