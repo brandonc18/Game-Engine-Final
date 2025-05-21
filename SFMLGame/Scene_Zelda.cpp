@@ -395,13 +395,7 @@ void Scene_Zelda::sDoAction(const Action &action) {
 }
 
 void Scene_Zelda::sAI() {
-  // TODO Implement enemy AI
-  // Implement Chase Behavior
-  // Implement Patrol Behavior
-    //auto& npcs = entityManager.getEntities("npc");
-    //for (int i = 0; i < npcs.size(); i++) {
-    //    
-    //}
+    //find the npcs and set their AI pattern
     for (auto npc : entityManager.getEntities("npc")) {
         if (npc->has<CPatrol>()) {
             patrolAI(npc);
