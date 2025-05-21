@@ -27,7 +27,6 @@ void Scene_LevelEditor::init(const string& levelPath) {
 
     // Register gameplay Actions
 
-    registerAction(sf::Keyboard::P, "PAUSE");
     registerAction(sf::Keyboard::Escape, "QUIT");
     registerAction(sf::Keyboard::Z, "SNAP");
     registerAction(sf::Keyboard::T, "TOGGLE_TEXTURE");
@@ -37,7 +36,7 @@ void Scene_LevelEditor::init(const string& levelPath) {
     registerAction(sf::Keyboard::D, "RIGHT");
     registerAction(sf::Keyboard::W, "UP");
     registerAction(sf::Keyboard::S, "DOWN");
-    //registerAction(sf::Keyboard::Space, "ATTACK");
+    registerAction(sf::Keyboard::L, "SAVE");
 }
 
 void Scene_LevelEditor::outputJSONFile()
@@ -127,131 +126,117 @@ void Scene_LevelEditor::outputJSONFile()
 void Scene_LevelEditor::update() {
     entityManager.update();
 
-    if (!paused)
-    {
-        sCamera();
-        sCreateEntity();
-        sSelectEntity();
-        sEntityGUI();
-        sGUI();
-        sRender();
-    }
-    else
-    {
-        sGUI();
-        sRender();
-    }
+    sAnimation();
+    sCamera();
+    sDragAndDrop();
+    sEntityGUI();
+    sGUI();
+    sRender();
+
     currentFrame++;
 }
 
 void Scene_LevelEditor::sDoAction(const Action& action) {
-    // Implement all actions described for game here
-    // Only the setting of the player's input component variables should be set here
-    // Do minimal logic in this function
+    if (ImGui::GetIO().WantCaptureKeyboard && action.getName() != "QUIT") {
+        return;
+    }
 
     if (action.getType() == "START")
     {
         if (action.getName() == "TOGGLE_TEXTURE") { drawTextures = !drawTextures; }
         else if (action.getName() == "TOGGLE_COLLISION") { drawCollision = !drawCollision; }
         else if (action.getName() == "TOGGLE_GRID") { drawGrid = !drawGrid; }
-        else if (action.getName() == "PAUSE") { setPaused(!paused); }
         else if (action.getName() == "SNAP") { snapToGrid = !snapToGrid; }
         else if (action.getName() == "QUIT") { onEnd(); }
         else if (action.getName() == "LEFT") { roomX -= 1; }
         else if (action.getName() == "RIGHT") { roomX += 1; }
         else if (action.getName() == "UP") { roomY -= 1; }
         else if (action.getName() == "DOWN") { roomY += 1; }
+        else if (action.getName() == "SAVE") { outputJSONFile(); }
     }
     else if (action.getType() == "END"){}
 }
 
-void Scene_LevelEditor::sCreateEntity() {
+void Scene_LevelEditor::sDragAndDrop() {
     // Get mouse position in relation to the window
     Vec2i mousePixelPos = sf::Mouse::getPosition(game->getWindow());
     Vec2f mouseWorldPos = game->getWindow().mapPixelToCoords(mousePixelPos);
+    bool isLeftMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+    bool isRightMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
 
     // Destroy entity if new one is selected in ImGui
-    if (selectedAnimationName != "none" && followMouse) {
-        followMouse = false;
-        movingEntity->destroy();
-        movingEntity = nullptr; // Reset for the next entity
+    if (selectedEntity != nullptr) {
+        if (selectedAnimationName != selectedEntity->get<CAnimation>().animation.getName() && ImGui::GetIO().WantCaptureMouse && selectedAnimation) {
+            if (selectedEntity->get<CDraggable>().dragging == true) {
+                selectedEntity->destroy();
+            }
+            selectedEntity = nullptr; // Reset for the next entity
+        }
     }
 
     // Create new entity if selected
-    if (selectedAnimationName != "none" && !followMouse) {
-        selectedEntity = nullptr;
+    if (selectedAnimationName != "none" && selectedAnimation || selectedAnimationName != "none" && continuePlacing && selectedEntity->get<CDraggable>().dragging == false) {
         followMouse = true;
-        movingEntity = entityManager.addEntity("tile");
-        movingEntity->add<CAnimation>(game->getAssets().getAnimation(selectedAnimationName), true);
-        movingEntity->add<CBoundingBox>(Vec2f(movingEntity->get<CAnimation>().animation.getSize().x, movingEntity->get<CAnimation>().animation.getSize().y));
+        selectedAnimation = false;
+        selectedEntity = entityManager.addEntity("tile");
+        selectedEntity->add<CAnimation>(game->getAssets().getAnimation(selectedAnimationName), true);
+        selectedEntity->add<CBoundingBox>(Vec2f(selectedEntity->get<CAnimation>().animation.getSize().x, selectedEntity->get<CAnimation>().animation.getSize().y));
+        selectedEntity->add<CDraggable>().dragging = true;
         if (snapToGrid) {
-            movingEntity->add<CTransform>(getSnappedPosition(mouseWorldPos.x, mouseWorldPos.y));
+            selectedEntity->add<CTransform>(getSnappedPosition(mouseWorldPos.x, mouseWorldPos.y));
         }
         else {
-            movingEntity->add<CTransform>(Vec2f(mouseWorldPos.x, mouseWorldPos.y));
+            selectedEntity->add<CTransform>(Vec2f(mouseWorldPos.x, mouseWorldPos.y));
         }
     }
 
-    // Selected Entity movement
-    if (followMouse && movingEntity != nullptr) {
-        if (snapToGrid) {
-            movingEntity->get<CTransform>().pos = getSnappedPosition(mouseWorldPos.x, mouseWorldPos.y);
+    static bool leftPressed = false;
+
+    for (auto e : entityManager.getEntities())
+    {
+        if (e->has<CDraggable>() && e->get<CDraggable>().dragging)
+        {
+            //Set e position to the current mouse position
+            if (snapToGrid) {
+                e->get<CTransform>().pos = getSnappedPosition(mouseWorldPos.x, mouseWorldPos.y);
+            }
+            else {
+                e->get<CTransform>().pos = Vec2f(mouseWorldPos.x, mouseWorldPos.y);
+            }
         }
-        else {
-            movingEntity->get<CTransform>().pos = Vec2f(mouseWorldPos.x, mouseWorldPos.y);
+        // Check to see if it should grab
+        if (isLeftMousePressed && !leftPressed && !ImGui::GetIO().WantCaptureMouse && (selectedEntity == nullptr || selectedEntity->get<CDraggable>().dragging == false)) {
+            if (isPointInside(e, mouseWorldPos)) {
+                e->get<CDraggable>().dragging = true;
+                selectedEntity = e;
+                leftPressed = isLeftMousePressed;
+            }
         }
-    }
-    // Remove selected animation as the entity is already created
-    selectedAnimationName = "none";
-
-    // Left Mouse click detection
-    bool isMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
-
-    // Check to see if it should place
-    if (isMousePressed && !wasLeftMousePressed && followMouse && movingEntity != nullptr && !ImGui::GetIO().WantCaptureMouse) {
-        selectedAnimationName = movingEntity->get<CAnimation>().animation.getName();
-        followMouse = false;
-        movingEntity = nullptr; // Reset for the next entity
-    }
-    wasLeftMousePressed = isMousePressed; // Update state for next frame
-
-    // Middle Mouse click detection
-    isMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Middle);
-
-    // Check to see if it should unselect and unfollow
-    if (isMousePressed && !wasMiddleMousePressed) {
-        selectedAnimationName = "none";
-        followMouse = false;
-        if (movingEntity != nullptr) {
-            movingEntity->destroy();
+        // Or if it should place
+        else if (isLeftMousePressed && e->get<CDraggable>().dragging == true && !leftPressed && !ImGui::GetIO().WantCaptureMouse) {
+            e->get<CDraggable>().dragging = false;
         }
-        movingEntity = nullptr;
-        selectedEntity = nullptr;
-    }
-    wasMiddleMousePressed = isMousePressed; // Update state for next frame
-}
-
-void Scene_LevelEditor::sSelectEntity() {
-    // Get mouse position in relation to the window
-    Vec2i mousePixelPos = sf::Mouse::getPosition(game->getWindow()); 
-    Vec2f mouseWorldPos = game->getWindow().mapPixelToCoords(mousePixelPos);
-
-    // Right Mouse click detection
-    bool isMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
-
-    // Check to see if it should place
-    if (isMousePressed && !wasRightMousePressed && !followMouse && !ImGui::GetIO().WantCaptureMouse) {
-        for (int i = 0; i < entityManager.getEntities().size(); i++) {
-            Vec2f entityBBox = entityManager.getEntities()[i]->get<CAnimation>().animation.getSize();
-            Vec2f entityBPos = entityManager.getEntities()[i]->get<CTransform>().pos;
-            if ((entityBPos.x - entityBBox.x / 2) < mouseWorldPos.x && (entityBPos.x + entityBBox.x / 2) > mouseWorldPos.x
-                && (entityBPos.y - entityBBox.y / 2) < mouseWorldPos.y && (entityBPos.y + entityBBox.y / 2) > mouseWorldPos.y) {
-                selectedEntity = entityManager.getEntities()[i];
+        // Select entity without picking it back up
+        if (isRightMousePressed && !ImGui::GetIO().WantCaptureMouse) {
+            if ((isPointInside(e, mouseWorldPos))) {
+                selectedEntity = e;
                 break;
             }
         }
     }
-    wasMiddleMousePressed = isMousePressed; // Update state for next frame
+
+    leftPressed = isLeftMousePressed;
+}
+
+bool Scene_LevelEditor::isPointInside(Entity* e, const Vec2f& point) {
+    if (!e->has<CBoundingBox>()) return false;
+    auto& box = e->get<CBoundingBox>();
+    auto& transform = e->get<CTransform>();
+    float left = transform.pos.x - box.size.x / 2;
+    float right = transform.pos.x + box.size.x / 2;
+    float top = transform.pos.y - box.size.y / 2;
+    float bottom = transform.pos.y + box.size.y / 2;
+    return point.x >= left && point.x <= right && point.y >= top && point.y <= bottom;
 }
 
 Vec2f Scene_LevelEditor::getSnappedPosition(float worldX, float worldY) const {
@@ -271,6 +256,20 @@ Vec2f Scene_LevelEditor::getSnappedPosition(float worldX, float worldY) const {
     float snappedY = roomOffsetY + tileY * 64.0f + 32.0f;
 
     return Vec2f(snappedX, snappedY);
+}
+
+void Scene_LevelEditor::sAnimation() {
+    if (animate) {
+        for (auto& entity : entityManager.getEntities()) {
+            if (entity->has<CAnimation>()) {
+                auto& animComponent = entity->get<CAnimation>();
+                animComponent.animation.update();
+                if (!animComponent.loop && animComponent.animation.hasEnded()) {
+                    entity->destroy();
+                }
+            }
+        }
+    }
 }
 
 void Scene_LevelEditor::sCamera() {
@@ -331,7 +330,7 @@ void Scene_LevelEditor::sRender() {
                 float ratio = (float)(h.current) / h.max;
                 size.x *= ratio;
                 rect.setSize({ size.x, size.y });
-                rect.setFillColor(sf::Color(255, 0, 0));
+                rect.setFillColor(sf::Color(0, 0, 255));
                 rect.setOutlineThickness(0);
                 game->getWindow().draw(rect);
 
@@ -440,7 +439,12 @@ void Scene_LevelEditor::sGUI() {
                     ImTextureID imguiTextureID = (void*)(intptr_t)textureID;
                     if (ImGui::ImageButton(it->first.c_str(), imguiTextureID, ImVec2(64.0, 64.0), ImVec2(0, 0),
                         ImVec2(1.0 / ((Animation)it->second).getFrameCount(), 1.0))) {
-                        selectedAnimationName = it->first; // Set the selected animation name
+                        if (selectedEntity != nullptr && selectedEntity->get<CDraggable>().dragging) {
+                            selectedEntity->destroy();
+                            selectedEntity = nullptr;
+                        }
+                        selectedAnimation = true;
+                        selectedAnimationName = it->first;
                     }
                     if ((count % 6) != 0) {
                         ImGui::SameLine();
@@ -448,6 +452,8 @@ void Scene_LevelEditor::sGUI() {
                 }
                 ImGui::NewLine();
                 ImGui::Checkbox("Snap to Grid", &snapToGrid);
+                ImGui::Checkbox("Continue Placing", &continuePlacing);
+                ImGui::Checkbox("Animate", &animate);
                 ImGui::Unindent();
 
             ImGui::EndTabItem();
@@ -565,10 +571,152 @@ void Scene_LevelEditor::sEntityGUI() {
         ImTextureID imguiTextureID = (void*)(intptr_t)textureID;
         ImGui::ImageButton(imguiTextureID, ImVec2(64.0, 64.0), ImVec2(0, 0),
             ImVec2(1.0 / selectedEntity->get<CAnimation>().animation.getFrameCount(), 1.0));
-        ImGui::SliderFloat("Bounding Box x", &selectedEntity->get<CBoundingBox>().size.x, 0, 120);
-        ImGui::SameLine();
-        ImGui::SliderFloat("Bounding Box y", &selectedEntity->get<CBoundingBox>().size.y, 0, 120);
-        if (ImGui::Button("Delete Entity")) { 
+
+        char tagBuffer[256] = "";
+        strcpy_s(tagBuffer, sizeof(tagBuffer), selectedEntity->tag().c_str());
+        if (ImGui::InputText("Tag", tagBuffer, sizeof(tagBuffer))) {
+            selectedEntity->setTag(tagBuffer); // Update the tag when changed
+        }
+
+        // Get list of animation names to change animation
+        vector<string> animationNames;
+        for (const auto& pair : game->getAssets().getAnimationMap()) {
+            animationNames.push_back(pair.first);
+        }
+        if (selectedEntity->has<CAnimation>()) {
+            auto& animation = selectedEntity->get<CAnimation>();
+            ImGui::Text("Animation");
+            string currentAnim = animation.animation.getName();
+            if (ImGui::BeginCombo("Animation", currentAnim.c_str())) {
+                for (const string& name : animationNames) {
+                    bool isSelected = (currentAnim == name);
+                    if (ImGui::Selectable(name.c_str(), isSelected)) {
+                        animation.animation = game->getAssets().getAnimation(name);
+                    }
+                    if (isSelected) {
+                        ImGui::SetItemDefaultFocus();
+                    }
+                }
+                ImGui::EndCombo();
+            }
+            ImGui::Checkbox("Loop", &animation.loop);
+        }
+
+        // Position, Scale, Angle
+        if (selectedEntity->has<CTransform>()) {
+            auto& transform = selectedEntity->get<CTransform>();
+            ImGui::Text("Transform");
+            ImGui::DragFloat2("Position", &transform.pos.x, 0.1f);
+            ImGui::DragFloat2("Scale", &transform.scale.x, 0.01f);
+            ImGui::DragFloat("Angle", &transform.angle, 1.0f);
+        }
+
+        // Bounding Box Size, BlockMove, BlockVision
+        if (selectedEntity->has<CBoundingBox>()) {
+            auto& box = selectedEntity->get<CBoundingBox>();
+            ImGui::Text("Bounding Box");
+            if (ImGui::DragFloat2("Size", &box.size.x, 1.0f, 0.0f, 1000.0f)) {
+                box.halfSize = Vec2f(box.size.x / 2, box.size.y / 2);
+            }
+            ImGui::Checkbox("Block Move", &box.blockMove);
+            ImGui::Checkbox("Block Vision", &box.blockVision);
+        }
+
+        // Max and Current health
+        if (selectedEntity->has<CHealth>()) {
+            auto& health = selectedEntity->get<CHealth>();
+            ImGui::Text("Health");
+            ImGui::DragInt("Max Health", &health.max, 1, 1, 1000);
+            ImGui::DragInt("Current Health", &health.current, 1, 0, health.max);
+        }
+
+        // Damage value
+        if (selectedEntity->has<CDamage>()) {
+            auto& damage = selectedEntity->get<CDamage>();
+            ImGui::Text("Damage");
+            ImGui::DragInt("Damage", &damage.damage, 1, 0, 1000);
+        }
+
+        // CChasePlayer Speed and Home position
+        if (selectedEntity->has<CChasePlayer>()) {
+            auto& chase = selectedEntity->get<CChasePlayer>();
+            ImGui::Text("Chase Player");
+            ImGui::DragFloat("Speed", &chase.speed, 0.1f, 0.0f, 100.0f);
+            ImGui::DragFloat2("Home Position", &chase.home.x, 0.1f);
+        }
+
+        // CPatrol Speed and List of positions
+        if (selectedEntity->has<CPatrol>()) {
+            auto& patrol = selectedEntity->get<CPatrol>();
+            ImGui::Text("Patrol");
+            ImGui::DragFloat("Speed", &patrol.speed, 0.1f, 0.0f, 100.0f);
+            for (size_t i = 0; i < patrol.positions.size(); ++i) {
+                std::string label = "Position " + std::to_string(i);
+                ImGui::DragFloat2(label.c_str(), &patrol.positions[i].x, 0.1f);
+                ImGui::SameLine();
+                if (ImGui::Button(("Remove##" + std::to_string(i)).c_str())) {
+                    patrol.positions.erase(patrol.positions.begin() + i);
+                    --i;
+                }
+            }
+            if (ImGui::Button("Add Position")) {
+                patrol.positions.push_back(Vec2f(0.0f, 0.0f));
+            }
+        }
+        // Change Player speed
+        if (selectedEntity->has<CInput>()) {
+            auto& input = selectedEntity->get<CInput>();
+            ImGui::Text("Input");
+            ImGui::DragInt("Speed", &input.speed, 1, 0, 100);
+        }
+
+        ImGui::Separator();
+        ImGui::Text("Add Component");
+
+        // Add Health
+        if (!selectedEntity->has<CHealth>()) {
+            if (ImGui::Button("Add Health")) {
+                selectedEntity->add<CHealth>(5, 5);
+            }
+        }
+        // Add Damage
+        if (!selectedEntity->has<CDamage>()) {
+            if (ImGui::Button("Add Damage")) {
+                selectedEntity->add<CDamage>(10);
+            }
+        }
+        // Add CInput for player
+        if (!selectedEntity->has<CInput>()) {
+            if (ImGui::Button("Add Input")) {
+                selectedEntity->add<CInput>();
+            }
+        }
+        // Get position fo the Entity
+        Vec2f currentPos(0.0f, 0.0f);
+        if (selectedEntity->has<CTransform>()) {
+            currentPos = selectedEntity->get<CTransform>().pos;
+        }
+        // Add Chase AI
+        if (!selectedEntity->has<CChasePlayer>()) {
+            if (ImGui::Button("Add Chase Player")) {
+                selectedEntity->add<CChasePlayer>(currentPos, 1.0f); // Default speed 1.0
+            }
+        }
+        // Add Patrol AI
+        if (!selectedEntity->has<CPatrol>()) {
+            if (ImGui::Button("Add Patrol")) {
+                std::vector<Vec2f> patrolPositions = { currentPos, currentPos + Vec2f(10.0f, 0.0f) };
+                selectedEntity->add<CPatrol>(patrolPositions, 1.0f);
+            }
+        }
+        // Add Invincibility
+        if (!selectedEntity->has<CInvincibility>()) {
+            if (ImGui::Button("Add Invincibility")) {
+                selectedEntity->add<CInvincibility>(60);
+            }
+        }
+        // Destroy Entity
+        if (ImGui::Button("Delete Entity")) {
             selectedEntity->destroy();
             selectedEntity = nullptr;
         }
@@ -576,12 +724,11 @@ void Scene_LevelEditor::sEntityGUI() {
     }
 }
 
-
 void Scene_LevelEditor::onEnd() {
     game->getAssets().getSound("Music").stop();
     game->getAssets().getSound("Title").play();
     game->getAssets().getSound("Title").setLoop(1);
-    //outputJSONFile();   
+    outputJSONFile();  
     game->changeScene("MENU", new Scene_Menu(game), true);
 }
 
@@ -594,49 +741,3 @@ void Scene_LevelEditor::drawLine(Vec2f p1, Vec2f p2) {
 int Scene_LevelEditor::width() { return game->getWindow().getSize().x; }
 
 int Scene_LevelEditor::height() { return game->getWindow().getSize().y; }
-
-//void sInput()
-//
-//{
-//
-//	if (left mouse button clicked)
-//
-//	{
-//
-//		auto e = closestDraggableEntityToMouseClickPosition();
-//
-//		auto& d = e->getComponent<CDraggable>().dragging;
-//
-//		//If we are currently dragging, let go of entity
-//
-//		if (d) { d = false; }
-//
-//		//Otherwise if we clicked inside the entity, start dragging
-//
-//		else if (mouse click is inside e's animation) { d = true }
-//
-//	}
-//
-//}
-//
-//
-//
-//void sDragAndDrop()
-//
-//{
-//
-//	for (auto e : entities)
-//
-//	{
-//
-//		if (e->hasComponent<CDraggable>() && e->getComponent<CDraggable>().dragging)
-//
-//		{
-//
-//			//Set e position to the current mouse position
-//
-//		}
-//
-//	}
-//
-//}

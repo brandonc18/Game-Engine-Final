@@ -920,7 +920,7 @@ void Scene_Zelda::sRender() {
         float ratio = (float)(h.current) / h.max;
         size.x *= ratio;
         rect.setSize({size.x, size.y});
-        rect.setFillColor(sf::Color(255, 0, 0));
+        rect.setFillColor(sf::Color(0, 0, 255));
         rect.setOutlineThickness(0);
         game->getWindow().draw(rect);
 

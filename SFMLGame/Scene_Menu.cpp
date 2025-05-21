@@ -18,6 +18,7 @@ void Scene_Menu::init()
 	registerAction(sf::Keyboard::Space, "PLAY");
 	registerAction(sf::Keyboard::Escape, "QUIT");
 	registerAction(sf::Keyboard::E, "EDIT");
+	registerAction(sf::Keyboard::T, "TEST");
 
 	title = "Strange Zelda";
 	menuText.setCharacterSize(36);
@@ -61,6 +62,11 @@ void Scene_Menu::sDoAction(const Action& action)
 		{
 			game->getAssets().getSound("Title").stop();
 			game->changeScene("EDIT", new Scene_LevelEditor(game, "LevelEditor.json"));
+		}
+		else if (action.getName() == "TEST")
+		{
+			game->getAssets().getSound("Title").stop();
+			game->changeScene("PLAY", new Scene_Zelda(game, "LevelEditor.json"));
 		}
 		else if (action.getName() == "QUIT")
 		{
