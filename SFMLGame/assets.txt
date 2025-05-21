@@ -116,7 +116,6 @@ Texture SpikesActivate textures\SpikesActivate.png
 Texture SpikesDeactivate textures\SpikesDeactivate.png
 Texture SpikesHit textures\SpikesHit.png
 Texture SpikesIdle textures\SpikesIdle.png
-
 Texture TallCandleLight textures\TallCandleLight.png
 Texture ThrowingSpear textures\ThrowingSpear.png
 Texture TreantIdleDown textures\TreantIdleDown.png
@@ -133,6 +132,13 @@ Texture UnderGlow textures\UnderGlow.png
 Texture Waterfall textures\Waterfall.png
 Texture YellowPotion textures\YellowPotion.png
 Texture arrow textures\arrow.png
+Texture DarkBrickStairs textures\DarkBrickStairs.png
+Texture DarkBricks textures\DarkBricks.png
+Texture DarkSmallTiles textures\DarkSmallTiles.png
+Texture DarkSmallTiles2 textures\DarkSmallTiles2.png
+Texture DarkTile textures\DarkTile.png
+Texture DarkTilePit textures\DarkTilePit.png
+Texture DarkTileSide textures\DarkTileSide.png
 
 Animation Bonfire Bonfire 4 8
 Animation BrokenTree BrokenTree 1 0
@@ -190,3 +196,10 @@ Animation UnderGlow UnderGlow 1 0
 Animation Waterfall Waterfall 3 5
 Animation YellowPotion YellowPotion 1 0
 Animation arrow arrow 1 0
+Animation DarkBrickStairs DarkBrickStairs 1 0
+Animation DarkBricks DarkBricks 1 0
+Animation DarkSmallTiles DarkSmallTiles 1 0
+Animation DarkSmallTiles2 DarkSmallTiles2 1 0
+Animation DarkTile DarkTile 1 0
+Animation DarkTilePit DarkTilePit 1 0
+Animation DarkTileSide DarkTileSide 1 0
