@@ -12,13 +12,14 @@ protected:
 	void sDoAction(const Action& action);
 	void sInput();
 	void sDragAndDrop();
+	bool isPointInside(Entity* e, const Vec2f& point);
+	void sAnimation();
 	void sCamera();
 	void sGUI();
 	void sEntityGUI();
 	void sRender();
 	void onEnd();
 	void sCreateEntity();
-	void sSelectEntity();
 	Vec2f getSnappedPosition(float worldX, float worldY) const;
 
 	int width();
@@ -33,13 +34,11 @@ protected:
 	bool snapToGrid = false;
 	bool continuePlacing = false;
 	bool followMouse = false;
-	bool wasLeftMousePressed = false;
-	bool wasMiddleMousePressed = false;
-	bool wasRightMousePressed = false;
+	bool animate = false;
 	const Vec2f gridSize = { 64,64 };
 	int roomX = 0;
 	int roomY = 0;
-	Entity* movingEntity = nullptr;
+	//Entity* movingEntity = nullptr;
 	Entity* selectedEntity = nullptr;
 	string selectedAnimationName = "none";
 	sf::Text gridText;

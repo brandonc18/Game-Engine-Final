@@ -35,6 +35,7 @@ public:
 	void destroy() { active = false; }
 	size_t id() const { return _id; }
 	const string& tag() const { return _tag; }
+	void setTag(const string& newTag) { _tag = newTag; }
 
 	template<typename T>
 	bool has() const
