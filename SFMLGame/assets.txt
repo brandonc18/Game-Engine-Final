@@ -145,7 +145,7 @@ Animation BrokenTree BrokenTree 1 0
 Animation Bullet Bullet 1 0
 Animation BushTall BushTall 1 0
 Animation BushShort BushShort 1 0
-Animation DeathAnimation DeathAnimation 3 5
+Animation DeathAnimation DeathAnimation 3 10
 Animation EmptyHeart EmptyHeart 1 0
 Animation Fire Fire 4 8
 Animation FullHeart FullHeart 1 0
@@ -193,7 +193,7 @@ Animation TreeOrange TreeOrange 1 0
 Animation TreePink TreePink 1 0
 Animation Trunk Trunk 1 0
 Animation UnderGlow UnderGlow 1 0
-Animation Waterfall Waterfall 3 5
+Animation Waterfall Waterfall 3 10
 Animation YellowPotion YellowPotion 1 0
 Animation arrow arrow 1 0
 Animation DarkBrickStairs DarkBrickStairs 1 0
