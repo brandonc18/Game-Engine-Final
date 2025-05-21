@@ -17,6 +17,7 @@ Scene_LevelEditor::Scene_LevelEditor(GameEngine* gameEngine, const string& level
 }
 
 void Scene_LevelEditor::init(const string& levelPath) {
+    loadLevelJSON(levelPath); 
     srand(time(NULL)); //seed all rand functions
 
     gridText.setCharacterSize(12);
@@ -37,6 +38,57 @@ void Scene_LevelEditor::init(const string& levelPath) {
     registerAction(sf::Keyboard::W, "UP");
     registerAction(sf::Keyboard::S, "DOWN");
     registerAction(sf::Keyboard::L, "SAVE");
+}
+
+void Scene_LevelEditor::loadLevelJSON(const string& filename)
+{
+    entityManager = EntityManager();
+
+    ifstream fin;
+    fin.open(filename);
+    json j;
+    fin >> j;
+
+    for (int i = 0; i < j["entities"].size(); i++)
+    {
+        Entity* e = entityManager.addEntity(j["entities"][i]["tag"]);
+        string animationName = j["entities"][i]["components"][1]["name"];
+        e->add<CAnimation>(game->getAssets().getAnimation(animationName), true);
+        e->add<CTransform>(Vec2f(j["entities"][i]["components"][0]["x"], j["entities"][i]["components"][0]["y"]), Vec2f(j["entities"][i]["components"][0]["scaleX"], j["entities"][i]["components"][0]["scaleY"]));
+        e->get<CTransform>().prevPos = e->get<CTransform>().pos;
+        if (j["entities"][i]["components"][2]["exists"])
+        {
+            e->add<CBoundingBox>(Vec2f(j["entities"][i]["components"][2]["x"], j["entities"][i]["components"][2]["y"]), j["entities"][i]["components"][2]["move"], j["entities"][i]["components"][2]["vision"]);
+        }
+        if (j["entities"][i]["components"][3]["exists"])
+        {
+            e->add<CHealth>(j["entities"][i]["components"][3]["max"], j["entities"][i]["components"][3]["current"]);
+        }
+        if (j["entities"][i]["components"][4]["exists"])
+        {
+            e->add<CDamage>(j["entities"][i]["components"][4]["damage"]);
+        }
+        if (j["entities"][i]["components"][5]["exists"])
+        {
+            e->add<CChasePlayer>(Vec2f(j["entities"][i]["components"][5]["home"][0], j["entities"][i]["components"][5]["home"][1]), j["entities"][i]["components"][5]["speed"]);
+        }
+        if (j["entities"][i]["components"][6]["exists"])
+        {
+            json positionsJson = j["entities"][i]["components"][6]["positions"];
+            vector<Vec2f> positions;
+            for (auto& pos : positionsJson)
+            {
+                positions.push_back(Vec2f(pos[0], pos[1]));
+            }
+            e->add<CPatrol>(positions, j["entities"][i]["components"][6]["speed"]);
+        }
+        if (j["entities"][i]["components"][7]["exists"])
+        {
+            e->add<CInput>(j["entities"][i]["components"][7]["speed"]);
+        }
+        if (e->tag() == "player")
+            e->add<CState>();
+    }
 }
 
 void Scene_LevelEditor::outputJSONFile()

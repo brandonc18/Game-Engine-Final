@@ -6,6 +6,7 @@ class Scene_LevelEditor : public Scene
 public:
 	Scene_LevelEditor(GameEngine* gameEngine, const string& levelPath);
 protected:
+	void loadLevelJSON(const string& filename);
 	void outputJSONFile();
 	void init(const string& levelPath);
 	void update();
