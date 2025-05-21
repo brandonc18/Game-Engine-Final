@@ -74,3 +74,46 @@ Sound LinkHurt sounds\LOZ_Link_Hurt.wav
 Sound Slash sounds\LOZ_Sword_Slash.wav
 Sound Title sounds\title.ogg
 Sound Music sounds\music.ogg
+
+Texture Bonfire textures\Bonfire.png
+Texture BrokenTree textures\BrokenTree.png
+Texture Bullet textures\Bullet.png
+Texture CyanPotion textures\CyanPotion.png
+Texture DeathAnimation textures\DeathAnimation.png
+Texture EmptyHeart textures\EmptyHeart.png
+Texture Fire textures\Fire.png
+Texture FullHeart textures\FullHeart.png
+Texture GreenPotion textures\GreenPotion.png
+Texture HeroAttackBack textures\HeroAttackBack.png
+Texture HeroAttackFront textures\HeroAttackFront.png
+Texture HeroAttackSide textures\HeroAttackSide.png
+Texture HeroBowAttackBack textures\HeroBowAttackBack.png
+Texture HeroBowAttackFront textures\HeroBowAttackFront.png
+Texture HeroBowAttackSide textures\HeroBowAttackSide.png
+Texture HeroIdleDown textures\HeroIdleDown.png
+Texture HeroIdleSide textures\HeroIdleSide.png
+Texture HeroIdleUp textures\HeroIdleUp.png
+Texture HeroWalkDown textures\HeroWalkDown.png
+Texture HeroWalkSide textures\HeroWalkSide.png
+Texture HeroWalkUp textures\HeroWalkUp.png
+
+Animation Bonfire Bonfire 4 8
+Animation BrokenTree BrokenTree 1 0
+Animation Bullet Bullet 1 0
+Animation DeathAnimation DeathAnimation 3 5
+Animation EmptyHeart EmptyHeart 1 0
+Animation Fire Fire 4 8
+Animation FullHeart FullHeart 1 0
+Animation GreenPotion GreenPotion 1 0
+Animation HeroAttackBack HeroAttackBack 3 15
+Animation HeroAttackFront HeroAttackFront 3 15
+Animation HeroAttackSide HeroAttackSide 3 15
+Animation HeroBowAttackBack HeroBowAttackBack 3 15
+Animation HeroBowAttackFront HeroBowAttackFront 3 15
+Animation HeroBowAttackSide HeroBowAttackSide 3 15
+Animation HeroIdleDown HeroIdleDown 1 0
+Animation HeroIdleSide HeroIdleSide 1 0
+Animation HeroIdleUp HeroIdleUp 1 0
+Animation HeroWalkDown HeroWalkDown 6 15
+Animation HeroWalkSide HeroWalkSide 6 15
+Animation HeroWalkUp HeroWalkUp 6 15
