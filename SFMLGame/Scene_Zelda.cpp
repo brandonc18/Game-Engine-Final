@@ -23,12 +23,8 @@ Scene_Zelda::Scene_Zelda(GameEngine *gameEngine, const string &levelPath) : Scen
 }
 
 void Scene_Zelda::init(const string &levelPath) {
-    if (levelPath == "Level1.json") {
-        loadLevelJSON(levelPath);
-    }
-    else {
-        loadLevel(levelPath);
-    }
+
+  loadLevelJSON(levelPath);
 
   srand(time(NULL)); //seed all rand functions
 
