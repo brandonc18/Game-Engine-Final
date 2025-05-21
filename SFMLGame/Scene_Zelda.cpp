@@ -166,6 +166,89 @@ void Scene_Zelda::loadLevel(const string &filename) {
   spawnPlayer();
 }
 
+void Scene_Zelda::saveLevel() {
+    int count = 0;
+    json j;
+    j["entities"] = json::array();
+    for (auto& e : entityManager.getEntities())
+    {
+        j["entities"][count] = { { "id",e->id() }, {"tag", e->tag()} };
+        j["entities"][count]["components"] = json::array();
+        CTransform transform = e->get<CTransform>();
+        j["entities"][count]["components"].push_back({ {"type", "CTransform"}, {"x", transform.pos.x}, {"y", transform.pos.y}, {"scaleX", transform.scale.x}, {"scaleY", transform.scale.y} });
+        CAnimation animation = e->get<CAnimation>();
+        j["entities"][count]["components"].push_back({ {"type", "CAnimation"}, {"name", animation.animation.getName()} });
+        if (e->has<CBoundingBox>())
+        {
+            CBoundingBox box = e->get<CBoundingBox>();
+            j["entities"][count]["components"].push_back({ {"exists", true}, { "type", "CBoundingBox" }, {"x", box.size.x}, {"y", box.size.y}, {"move", box.blockMove}, {"vision", box.blockVision} });
+        }
+        else
+        {
+            j["entities"][count]["components"].push_back({ {"exists", false}, { "type", "CBoundingBox" } });
+        }
+        if (e->has<CHealth>())
+        {
+            CHealth health = e->get<CHealth>();
+            j["entities"][count]["components"].push_back({ {"exists", true}, {"type", "CHealth"}, {"max", health.max}, {"current", health.current} });
+        }
+        else
+        {
+            j["entities"][count]["components"].push_back({ {"exists", false}, { "type", "CHealth" } });
+        }
+        if (e->has<CDamage>())
+        {
+            CDamage damage = e->get<CDamage>();
+            j["entities"][count]["components"].push_back({ {"exists", true}, {"type", "CDamage"}, {"damage", damage.damage} });
+        }
+        else
+        {
+            j["entities"][count]["components"].push_back({ {"exists", false}, { "type", "CDamage" } });
+        }
+        if (e->has<CChasePlayer>())
+        {
+            auto& chase = e->get<CChasePlayer>();
+            j["entities"][count]["components"].push_back({ {"exists", true}, {"type", "CChasePlayer"}, {"speed", chase.speed}, {"home", {chase.home.x, chase.home.y} } });
+        }
+        else
+        {
+            j["entities"][count]["components"].push_back({ {"exists", false}, { "type", "CChasePlayer" } });
+        }
+        if (e->has<CPatrol>())
+        {
+            auto& patrol = e->get<CPatrol>();
+            json patrolConfig = { {"exists", true}, {"type", "CPatrol"}, {"speed", patrol.speed} };
+            json positions = json::array();
+            for (auto& pos : patrol.positions)
+            {
+                positions.push_back({ pos.x, pos.y });
+            }
+            patrolConfig["positions"] = positions;
+            j["entities"][count]["components"].push_back(patrolConfig);
+        }
+        else
+        {
+            j["entities"][count]["components"].push_back({ {"exists", false}, { "type", "CPatrol" } });
+        }
+        if (e->has<CInput>())
+        {
+            CInput input = e->get<CInput>();
+            j["entities"][count]["components"].push_back({ {"exists", true}, {"type", "CInput"}, {"speed", input.speed} });
+        }
+        else
+        {
+            j["entities"][count]["components"].push_back({ {"exists", false}, { "type", "CInput" } });
+        }
+        count++;
+    }
+
+    ofstream fout;
+    fout.open("Continue.json");
+    fout << j.dump(4);
+    fout.close();
+    cout << "Saved Progress" << endl;
+}
+
 Vec2f Scene_Zelda::getPosition(int rx, int ry, int tx, int ty) const {
   //setup final position variable
   Vec2f position = { 0,0 };
