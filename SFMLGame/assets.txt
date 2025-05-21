@@ -78,6 +78,8 @@ Sound Music sounds\music.ogg
 Texture Bonfire textures\Bonfire.png
 Texture BrokenTree textures\BrokenTree.png
 Texture Bullet textures\Bullet.png
+Texture BushTall textures\BushTall.png
+Texture BushShort textures\BushShort.png
 Texture CyanPotion textures\CyanPotion.png
 Texture DeathAnimation textures\DeathAnimation.png
 Texture EmptyHeart textures\EmptyHeart.png
@@ -96,10 +98,31 @@ Texture HeroIdleUp textures\HeroIdleUp.png
 Texture HeroWalkDown textures\HeroWalkDown.png
 Texture HeroWalkSide textures\HeroWalkSide.png
 Texture HeroWalkUp textures\HeroWalkUp.png
+Texture Longsword textures\Longsword.png
+Texture MoleIdleDown textures\MoleIdleDown.png
+Texture MoleIdleSide textures\MoleIdleSide.png
+Texture MoleIdleUp textures\MoleIdleUp.png
+Texture MoleWalkDown textures\MoleWalkDown.png
+Texture MoleWalkSide textures\MoleWalkSide.png
+Texture MoleWalkUp textures\MoleWalkUp.png
+
+Texture OrangePotion textures\OrangePotion.png
+Texture PurplePotion textures\PurplePotion.png
+Texture RedPotion textures\RedPotion.png
+Texture RockMonument textures\RockMonument.png
+Texture Pistol textures\Pistol.png
+Texture Shotgun textures\Shotgun.png
+Texture SmallCandle textures\SmallCandle.png
+Texture SpikesActivate textures\SpikesActivate.png
+Texture SpikesDeactivate textures\SpikesDeactivate.png
+Texture SpikesHit textures\SpikesHit.png
+Texture SpikesIdle textures\SpikesIdle.png
 
 Animation Bonfire Bonfire 4 8
 Animation BrokenTree BrokenTree 1 0
 Animation Bullet Bullet 1 0
+Animation BushTall BushTall 1 0
+Animation BushShort BushShort 1 0
 Animation DeathAnimation DeathAnimation 3 5
 Animation EmptyHeart EmptyHeart 1 0
 Animation Fire Fire 4 8
@@ -117,3 +140,21 @@ Animation HeroIdleUp HeroIdleUp 1 0
 Animation HeroWalkDown HeroWalkDown 6 15
 Animation HeroWalkSide HeroWalkSide 6 15
 Animation HeroWalkUp HeroWalkUp 6 15
+Animation Longsword Longsword 1 0
+Animation MoleIdleDown MoleIdleDown 1 0
+Animation MoleIdleSide MoleIdleSide 1 0
+Animation MoleIdleUp MoleIdleUp 1 0
+Animation MoleWalkDown MoleWalkDown 4 15
+Animation MoleWalkSide MoleWalkSide 4 15
+Animation MoleWalkUp MoleWalkUp 4 15
+Animation OrangePotion OrangePotion 1 0
+Animation PurplePotion PurplePotion 1 0
+Animation RedPotion RedPotion 1 0
+Animation RockMonument RockMonument 1 0
+Animation Pistol Pistol 1 0
+Animation Shotgun Shotgun 1 0
+Animation SmallCandle SmallCandle 3 8
+Animation SpikesActivate SpikesActivate 6 15
+Animation SpikesDeactivate SpikesDeactivate 4 15
+Animation SpikesHit SpikesHit 7 15
+Animation SpikesIdle SpikesIdle 24 5
