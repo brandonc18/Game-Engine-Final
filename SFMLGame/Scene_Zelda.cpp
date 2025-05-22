@@ -302,28 +302,28 @@ void Scene_Zelda::spawnSword(Entity *entity) {
     // Find the direction the player is facing to determine attack direction
     // up
     if (playerState.find("Up") != string::npos) {
-        player()->get<CState>().state = "AtkUp";
-        sword->get<CState>().state = "SwordUp";
+        player()->get<CState>().state = "HeroAttackFront";
+        sword->get<CState>().state = "Longsword";
         sword->get<CTransform>().pos.y -= gridSize.x;
     }
     // left
-    else if (player()->get<CTransform>().scale.x == -1 && playerState.find("Right") != string::npos) {
+    else if (player()->get<CTransform>().scale.x == -1 && playerState.find("Side") != string::npos) {
         sword->get<CTransform>().scale.x = -1;
-        player()->get<CState>().state = "AtkRight";
-        sword->get<CState>().state = "SwordRight";
+        player()->get<CState>().state = "HeroAttackSide";
+        sword->get<CState>().state = "LongswordSide";
         sword->get<CTransform>().pos.x -= gridSize.x;
     }
     // right
     else if (playerState.find("Right") != string::npos) {
-        player()->get<CState>().state = "AtkRight";
-        sword->get<CState>().state = "SwordRight";
+        player()->get<CState>().state = "HeroAttackSide";
+        sword->get<CState>().state = "LongswordSide";
         sword->get<CTransform>().pos.x += gridSize.y;
     }
     // down
     else {
         sword->get<CTransform>().scale.y = -1;
-        player()->get<CState>().state = "AtkDown";
-        sword->get<CState>().state = "SwordDown";
+        player()->get<CState>().state = "HeroAttackBack";
+        sword->get<CState>().state = "Longsword";
         sword->get<CTransform>().pos.y += gridSize.y;
     }
     sword->add<CAnimation>(game->getAssets().getAnimation(sword->get<CState>().state), true);
@@ -418,12 +418,12 @@ void Scene_Zelda::sMovement() {
       if (!player()->get<CInput>().right && !player()->get<CInput>().attack && player()->get<CInput>().attack == false)
       {
           velocity.x = -3;
-          player()->get<CState>().state = "RunRight";
+          player()->get<CState>().state = "HeroWalkSide";
       }
       else if (player()->get<CInput>().attack == false)
       {
           velocity.x = 0;
-          player()->get<CState>().state = "StandRight";
+          player()->get<CState>().state = "HeroIdleSide";
       }
   }
   //right
@@ -433,12 +433,12 @@ void Scene_Zelda::sMovement() {
       {
           velocity.x = 3;
           player()->get<CTransform>().scale.x = 1;
-          player()->get<CState>().state = "RunRight";
+          player()->get<CState>().state = "HeroWalkSide";
       }
       else if (player()->get<CInput>().attack == false)
       {
           velocity.x = 0;
-          player()->get<CState>().state = "StandRight";
+          player()->get<CState>().state = "HeroIdleSide";
       }
   }
   //vertical
@@ -448,12 +448,12 @@ void Scene_Zelda::sMovement() {
       if (!player()->get<CInput>().down && !player()->get<CInput>().attack && player()->get<CInput>().attack == false)
       {
           velocity.y = -3;
-          player()->get<CState>().state = "RunUp";
+          player()->get<CState>().state = "HeroWalkUp";
       }
       else if (player()->get<CInput>().attack == false)
       {
           velocity.y = 0;
-          player()->get<CState>().state = "StandUp";
+          player()->get<CState>().state = "HeroIdleUp";
       }
   }
   //down
@@ -462,12 +462,12 @@ void Scene_Zelda::sMovement() {
       if (!player()->get<CInput>().up && !player()->get<CInput>().attack && player()->get<CInput>().attack == false)
       {
           velocity.y = 3;
-          player()->get<CState>().state = "RunDown";
+          player()->get<CState>().state = "HeroWalkDown";
       }
       else if (player()->get<CInput>().attack == false)
       {
           velocity.y = 0;
-          player()->get<CState>().state = "StandDown";
+          player()->get<CState>().state = "HeroIdleDown";
       }
   }
 
@@ -478,19 +478,19 @@ void Scene_Zelda::sMovement() {
   //set states for idle animations when player is not moving
   if (velocity.x == 0 && velocity.y == 0)
   {
-      if (player()->get<CAnimation>().animation.getName().find("Run") != string::npos)
+      if (player()->get<CAnimation>().animation.getName().find("Walk") != string::npos)
       {
-          if (player()->get<CAnimation>().animation.getName() == "RunUp")
+          if (player()->get<CAnimation>().animation.getName() == "HeroWalkUp")
           {
-              player()->get<CState>().state = "StandUp";
+              player()->get<CState>().state = "HeroIdleUp";
           }
-          else if (player()->get<CAnimation>().animation.getName() == "RunDown")
+          else if (player()->get<CAnimation>().animation.getName() == "HeroWalkDown")
           {
-              player()->get<CState>().state = "StandDown";
+              player()->get<CState>().state = "HeroIdleDown";
           }
           else
           {
-              player()->get<CState>().state = "StandRight";
+              player()->get<CState>().state = "HeroIdleSide";
           }
       }
   }
