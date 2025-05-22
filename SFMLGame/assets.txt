@@ -74,6 +74,9 @@ Sound LinkHurt sounds\LOZ_Link_Hurt.wav
 Sound Slash sounds\LOZ_Sword_Slash.wav
 Sound Title sounds\title.ogg
 Sound Music sounds\music.ogg
+Sound Music2 sounds\survival-rock-energetic-action-music-342425.mp3
+Sound Shoot sounds\Hand_Gun_2.wav
+Sound Death sounds\Flare_gun_5-2.wav
 
 Texture Bonfire textures\Bonfire.png
 Texture BrokenTree textures\BrokenTree.png

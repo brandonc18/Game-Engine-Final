@@ -31,8 +31,8 @@ void Scene_Zelda::init(const string &levelPath) {
   gridText.setCharacterSize(12);
   gridText.setFont(game->getAssets().getFont("Techfont"));
   game->getWindow().setTitle(levelPath);
-  game->getAssets().getSound("Music").play();
-  game->getAssets().getSound("Music").setLoop(1);
+  game->getAssets().getSound("Music2").play();
+  game->getAssets().getSound("Music2").setLoop(1);
 
   // Register gameplay Actions
 
@@ -336,7 +336,7 @@ void Scene_Zelda::spawnSword(Entity *entity) {
 
 void Scene_Zelda::spawnBullet(Entity* entity)
 {
-    cout << "spawn bullet" << endl;
+    game->getAssets().getSound("Shoot").play();
     //TODO spawn bullet where mouse clicks using config values
     auto bullet = entityManager.addEntity("bullet");
     bullet->add<CTransform>(entity->get<CTransform>().pos);
@@ -895,7 +895,7 @@ void Scene_Zelda::sCollision() {
           if (player()->get<CHealth>().current <= 0)
           {
               player()->destroy();
-              game->getAssets().getSound("LinkDie").play();
+              game->getAssets().getSound("Death").play();
           }
       }
 
@@ -988,7 +988,7 @@ void Scene_Zelda::sCollision() {
                   if (entityManager.getEntities()[j]->get<CHealth>().current <= 0)
                   {
                       entityManager.getEntities()[j]->destroy();
-                      game->getAssets().getSound("EnemyDie").play();
+                      game->getAssets().getSound("Death").play();
                   }
               }
               else if (collides && entityManager.getEntities()[j]->tag() == "player" && entityManager.getEntities()[i]->get<CInput>().fromPlayer == false)
@@ -1003,7 +1003,7 @@ void Scene_Zelda::sCollision() {
                   if (entityManager.getEntities()[j]->get<CHealth>().current <= 0)
                   {
                       entityManager.getEntities()[j]->destroy();
-                      game->getAssets().getSound("EnemyDie").play();
+                      game->getAssets().getSound("Death").play();
                   }
               }
           }
@@ -1120,7 +1120,7 @@ void Scene_Zelda::sCollision() {
                   if (entityManager.getEntities()[j]->get<CHealth>().current <= 0)
                   {
                       entityManager.getEntities()[j]->destroy();
-                      game->getAssets().getSound("EnemyDie").play();
+                      game->getAssets().getSound("Death").play();
                   }
               }
           }
@@ -1185,9 +1185,9 @@ void Scene_Zelda::onEnd() {
   // stop music
   // play menu scene music
   // change scene to menu
-  game->getAssets().getSound("Music").stop();
-  game->getAssets().getSound("Title").play();
-  game->getAssets().getSound("Title").setLoop(1);
+  game->getAssets().getSound("Music2").stop();
+  game->getAssets().getSound("Music2").play();
+  game->getAssets().getSound("Music2").setLoop(1);
   game->changeScene("MENU", new Scene_Menu(game), true);
 }
 
