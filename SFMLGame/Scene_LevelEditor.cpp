@@ -265,6 +265,14 @@ void Scene_LevelEditor::sDragAndDrop() {
                 leftPressed = isLeftMousePressed;
             }
         }
+        if (isLeftMousePressed && !ImGui::GetIO().WantCaptureMouse && leftPressed && selectedEntity != nullptr && selectedEntity->tag() == "tile") {
+            if (isPointInside(e, mouseWorldPos) && e->tag() != "tile") {
+                e->get<CDraggable>().dragging = true;
+                selectedEntity->get<CDraggable>().dragging = false;
+                selectedEntity = e;
+                leftPressed = isLeftMousePressed;
+            }
+        }
         // Or if it should place
         else if (isLeftMousePressed && e->get<CDraggable>().dragging == true && !leftPressed && !ImGui::GetIO().WantCaptureMouse) {
             e->get<CDraggable>().dragging = false;

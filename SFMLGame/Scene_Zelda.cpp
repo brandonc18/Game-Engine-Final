@@ -579,7 +579,7 @@ void Scene_Zelda::sAI() {
     //find the npcs and set their AI pattern
     for (auto npc : entityManager.getEntities("npc")) {
         if (npc->has<CPatrol>() && npc->has<CChasePlayer>()) {
-
+            chasePatrolAI(npc);
         }
         else if (npc->has<CPatrol>()) {
             patrolAI(npc);
@@ -589,6 +589,35 @@ void Scene_Zelda::sAI() {
         }
     }
 }
+
+void Scene_Zelda::chasePatrolAI(Entity* npc) {
+    bool canSee = true;
+    // determine if there is anything blocking npc vision towards player
+    if (npc->has<CChasePlayer>()) {
+        Intersect npcplayer = Physics::EntityIntersect(npc->get<CTransform>().pos, player()->get<CTransform>().pos, player());
+        float npcPlayerdist = npc->get<CTransform>().pos.dist(player()->get<CTransform>().pos);
+        for (auto entity : entityManager.getEntities()) {
+            if (npc->id() != entity->id() && entity->id() != player()->id()) {
+                float npcObjectDistance = npc->get<CTransform>().pos.dist(entity->get<CTransform>().pos);
+                if (npcObjectDistance < npcPlayerdist) {
+                    Intersect object = Physics::EntityIntersect(npc->get<CTransform>().pos, player()->get<CTransform>().pos, entity);
+                    if (object.result && entity->get<CBoundingBox>().blockVision) {
+                        canSee = false;
+                    }
+                }
+            }
+        }
+    }
+    npc->get<CTransform>().prevPos = npc->get<CTransform>().pos;
+    if (canSee) {   // if npc can see player, chase them
+        chaseHelper(npc, player()->get<CTransform>().pos);
+    }
+    // If npc can't see player it patrols
+    else {
+        patrolAI(npc);
+    }
+}
+
 
 void Scene_Zelda::patrolAI(Entity* npc) {
     // traverse the nodes
