@@ -1,0 +1,286 @@
+{
+    "entities": [
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 544.0,
+                    "y": 288.0
+                },
+                {
+                    "name": "StandDown",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": true,
+                    "move": true,
+                    "type": "CBoundingBox",
+                    "vision": false,
+                    "x": 64.0,
+                    "y": 64.0
+                },
+                {
+                    "current": 5,
+                    "exists": true,
+                    "max": 5,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CChasePlayer"
+                },
+                {
+                    "exists": false,
+                    "type": "CPatrol"
+                },
+                {
+                    "exists": true,
+                    "speed": 0,
+                    "type": "CInput"
+                }
+            ],
+            "id": 0,
+            "tag": "player"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 384.0,
+                    "y": 556.0
+                },
+                {
+                    "name": "Armos",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": true,
+                    "move": true,
+                    "type": "CBoundingBox",
+                    "vision": false,
+                    "x": 64.0,
+                    "y": 64.0
+                },
+                {
+                    "current": 5,
+                    "exists": true,
+                    "max": 5,
+                    "type": "CHealth"
+                },
+                {
+                    "damage": 1,
+                    "exists": true,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": true,
+                    "home": [
+                        384.0,
+                        556.0
+                    ],
+                    "speed": 1.0,
+                    "type": "CChasePlayer"
+                },
+                {
+                    "exists": false,
+                    "type": "CPatrol"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 1,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 484.0,
+                    "y": 408.0
+                },
+                {
+                    "name": "RockBL",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": true,
+                    "move": false,
+                    "type": "CBoundingBox",
+                    "vision": false,
+                    "x": 64.0,
+                    "y": 64.0
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CChasePlayer"
+                },
+                {
+                    "exists": false,
+                    "type": "CPatrol"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 2,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 646.0,
+                    "y": 162.99998474121094
+                },
+                {
+                    "name": "Heart",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": true,
+                    "move": true,
+                    "type": "CBoundingBox",
+                    "vision": false,
+                    "x": 64.0,
+                    "y": 64.0
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CChasePlayer"
+                },
+                {
+                    "exists": false,
+                    "type": "CPatrol"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 3,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 396.0,
+                    "y": 138.0
+                },
+                {
+                    "name": "Explosion",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": true,
+                    "move": true,
+                    "type": "CBoundingBox",
+                    "vision": false,
+                    "x": 64.0,
+                    "y": 64.0
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "damage": 10,
+                    "exists": true,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CChasePlayer"
+                },
+                {
+                    "exists": false,
+                    "type": "CPatrol"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 4,
+            "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 431.0,
+                    "y": 295.0
+                },
+                {
+                    "name": "Heart",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": true,
+                    "move": false,
+                    "type": "CBoundingBox",
+                    "vision": false,
+                    "x": 64.0,
+                    "y": 64.0
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CChasePlayer"
+                },
+                {
+                    "exists": false,
+                    "type": "CPatrol"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 5,
+            "tag": "tile"
+        }
+    ]
+}
