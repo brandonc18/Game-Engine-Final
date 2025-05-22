@@ -1,80 +1,4 @@
-﻿  Scene_Menu.cpp
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(18,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'Scene_Menu.cpp')
-  
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(18,65): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'Scene_Menu.cpp')
-  
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:             T=float
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         ]
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         and
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:             T=int
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         ]
-  (compiling source file 'Scene_Menu.cpp')
-  
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:             T=float
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         ]
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         and
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:             T=int
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         ]
-  (compiling source file 'Scene_Menu.cpp')
-  
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,57): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,57): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,57): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,57): warning C4244:             T=int
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,57): warning C4244:         ]
-  (compiling source file 'Scene_Menu.cpp')
-  
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:             T=float
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         ]
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         and
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:             T=int
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         ]
-  (compiling source file 'Scene_Menu.cpp')
-  
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:             T=float
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         ]
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         and
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:             T=int
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         ]
-  (compiling source file 'Scene_Menu.cpp')
-  
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,67): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,67): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,67): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,67): warning C4244:             T=int
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,67): warning C4244:         ]
-  (compiling source file 'Scene_Menu.cpp')
-  
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(60,50): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(164,21): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(164,21): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(164,21): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(164,21): warning C4244:             T=unsigned int
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(164,21): warning C4244:         ]
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(165,22): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(165,22): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(165,22): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(165,22): warning C4244:             T=unsigned int
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Menu.cpp(165,22): warning C4244:         ]
-  Scene_Zelda.cpp
+﻿  Scene_Zelda.cpp
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(18,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Scene_Zelda.cpp')
   
@@ -181,8 +105,8 @@ C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Fin
           ]
   
   Generating code
-  8 of 4770 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  0 of 4770 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    59 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SFMLGame.vcxproj -> C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\x64\Release\SFMLGame.exe

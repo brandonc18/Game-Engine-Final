@@ -1088,7 +1088,7 @@ void Scene_Zelda::sCollision() {
   //Collision checks for Sword
   for (int i = 0; i < entityManager.getEntities().size(); i++)
   {
-      if (entityManager.getEntities()[i]->get<CAnimation>().animation.getName().find("Sword") != string::npos)
+      if (entityManager.getEntities()[i]->get<CAnimation>().animation.getName().find("Longsword") != string::npos)
       {
           //check collisions for player
           for (int j = 0; j < entityManager.getEntities().size(); j++)
