@@ -705,7 +705,7 @@ void Scene_Zelda::sStatus()
     }
 
     //Health Potion
-    if (playerConfig.HP > 0)
+    if (playerConfig.HP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
     {
 
     }
