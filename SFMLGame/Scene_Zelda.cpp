@@ -466,7 +466,7 @@ void Scene_Zelda::sMovement() {
   }
 
   if (player()->get<CInput>().canRun == true) {
-      player()->get<CTransform>().pos += velocity;
+      player()->get<CTransform>().pos += velocity * player()->get<CInput>().speed;
   }
 
   //set states for idle animations when player is not moving
@@ -707,31 +707,29 @@ void Scene_Zelda::sStatus()
     //Health Potion
     if (playerConfig.HP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
     {
-
+        playerConfig.HP--;
+        player()->get<CHealth>().current = player()->get<CHealth>().max;
     }
 
     //Speed Potion
-    if (playerConfig.SPP > 0)
+    if (player()->get<CInput>().speedBuffTimer <= 0) { player()->get<CInput>().speed = 1; }
+    if (playerConfig.SPP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num6) && player()->get<CInput>().speedBuffTimer <= 0)
     {
-
+        player()->get<CInput>().speed = 2;
+        player()->get<CInput>().speedBuffTimer = 300;
     }
+    if (player()->get<CInput>().speedBuffTimer >= 0) { player()->get<CInput>().speedBuffTimer--; }
 
     //Strength Potion
-    if (playerConfig.STP > 0)
-    {
-
-    }
-
-    //Invisibility Potion
-    if (playerConfig.INVISP > 0)
+    if (playerConfig.STP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num7))
     {
 
     }
 
     //Invincibility Potion
-    if (playerConfig.INVINCP > 0)
+    if (playerConfig.INVINCP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num9) && !player()->get<CInvincibility>().exists)
     {
-
+        player()->add<CInvincibility>(600);
     }
 }
 

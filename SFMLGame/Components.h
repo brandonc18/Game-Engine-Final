@@ -189,6 +189,10 @@ public:
 	int teleportCooldown = 0;
 	int bulletCooldown = 0;
 	bool fromPlayer = true;
+	int speedBuffTimer = 0;
+	int strengthBuffTimer = 0;
+	int invisibilityBuffTimer = 0;
+	int invincibilityBuffTimer = 0;
 };
 
 class CDraggable : public Component

@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_End.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SFMLGame\\Scene_End.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|solutionrelative:SFMLGame\\Scene_Zelda.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|solutionrelative:SFMLGame\\Scene_Zelda.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Components.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|solutionrelative:SFMLGame\\Components.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_End.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SFMLGame\\Scene_End.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\json.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -23,14 +31,6 @@
       "RelativeMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|solutionrelative:SFMLGame\\Assets.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Components.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|solutionrelative:SFMLGame\\Components.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|solutionrelative:SFMLGame\\Scene_Zelda.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Physics.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7086BBDA-099E-43C8-8468-35117F34FDAF}|SFMLGame\\SFMLGame.vcxproj|solutionrelative:SFMLGame\\Physics.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,20 +50,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Scene_End.cpp",
               "DocumentMoniker": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_End.cpp",
               "RelativeDocumentMoniker": "SFMLGame\\Scene_End.cpp",
               "ToolTip": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_End.cpp",
               "RelativeToolTip": "SFMLGame\\Scene_End.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-22T02:47:43.325Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "json.hpp",
               "DocumentMoniker": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\json.hpp",
               "RelativeDocumentMoniker": "SFMLGame\\json.hpp",
@@ -76,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Assets.h",
               "DocumentMoniker": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Assets.h",
               "RelativeDocumentMoniker": "SFMLGame\\Assets.h",
@@ -102,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Scene_LevelEditor.cpp",
               "DocumentMoniker": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_LevelEditor.cpp",
               "RelativeDocumentMoniker": "SFMLGame\\Scene_LevelEditor.cpp",
@@ -115,39 +115,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Components.h",
               "DocumentMoniker": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Components.h",
               "RelativeDocumentMoniker": "SFMLGame\\Components.h",
-              "ToolTip": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Components.h",
-              "RelativeToolTip": "SFMLGame\\Components.h",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAAAL4AAAASAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Components.h*",
+              "RelativeToolTip": "SFMLGame\\Components.h*",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAAAMIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-21T23:34:38.741Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Scene_Zelda.h",
               "DocumentMoniker": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.h",
               "RelativeDocumentMoniker": "SFMLGame\\Scene_Zelda.h",
               "ToolTip": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.h",
               "RelativeToolTip": "SFMLGame\\Scene_Zelda.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-21T23:19:50.36Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Scene_Zelda.cpp",
               "DocumentMoniker": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.cpp",
               "RelativeDocumentMoniker": "SFMLGame\\Scene_Zelda.cpp",
-              "ToolTip": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.cpp",
-              "RelativeToolTip": "SFMLGame\\Scene_Zelda.cpp",
-              "ViewState": "AgIAAMACAAAAAAAAAAAQwMYCAAAFAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\kstue\\Desktop\\Game Engine Development\\Game-Engine-Final\\Game-Engine-Final\\SFMLGame\\Scene_Zelda.cpp*",
+              "RelativeToolTip": "SFMLGame\\Scene_Zelda.cpp*",
+              "ViewState": "AgIAAMYCAAAAAAAAAAAAANYCAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-08T22:41:23.346Z",
               "EditorCaption": ""
