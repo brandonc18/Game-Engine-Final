@@ -1,47 +1,44 @@
+#include "Scene_End.h"
 #include "Scene_Menu.h"
 #include "Scene_Zelda.h"
 #include "Scene_LevelEditor.h"
-#include "Scene_End.h"
 #include "GameEngine.h"
 #include "imgui/imgui.h"
 #include "imgui/imgui-SFML.h"
 #include "json.hpp"
 using json = nlohmann::json;
 
-Scene_Menu::Scene_Menu(GameEngine* gameEngine)
+Scene_End::Scene_End(GameEngine* gameEngine)
 	:Scene(gameEngine)
 {
 	init();
 }
 
-void Scene_Menu::init()
+void Scene_End::init()
 {
 	loadMenuBackground();
 	registerAction(sf::Keyboard::W, "UP");
 	registerAction(sf::Keyboard::S, "DOWN");
 	registerAction(sf::Keyboard::Space, "PLAY");
 	registerAction(sf::Keyboard::Escape, "QUIT");
-	registerAction(sf::Keyboard::E, "EDIT");
 
-	title = "Strange Dungeon";
+	title = "Strange Dungeon Finished";
 	menuText.setCharacterSize(36);
 	menuText.setFont(game->getAssets().getFont("Techfont"));
 
-	menuStrings.push_back("Continue Level");
-	menuStrings.push_back("Level 1");
-	menuStrings.push_back("Level 2");
-	menuStrings.push_back("Level 3");
+	winText.setFont(game->getAssets().getFont("Techfont"));
+	winText.setString("You Won");
+	winText.setCharacterSize(72);
+	winText.setFillColor(sf::Color::Red);
+
+	menuStrings.push_back("Main Menu");
 	menuStrings.push_back("Quit");
-	levelPaths.push_back("Continue.json");
-	levelPaths.push_back("Level1.json");
-	levelPaths.push_back("Level2.json");
-	levelPaths.push_back("Level3.json");
 
 	game->getAssets().getSound("Title").play();
 	game->getAssets().getSound("Title").setLoop(1);
 }
 
-void Scene_Menu::update()
+void Scene_End::update()
 {
 	entityManager.update();
 
@@ -50,7 +47,7 @@ void Scene_Menu::update()
 	currentFrame++;
 }
 
-void Scene_Menu::sDoAction(const Action& action)
+void Scene_End::sDoAction(const Action& action)
 {
 	if (action.getType() == "START")
 	{
@@ -65,22 +62,11 @@ void Scene_Menu::sDoAction(const Action& action)
 		}
 		else if (action.getName() == "PLAY")
 		{
-			if (menuStrings[selectedMenuIndex] != "Quit") {
-				game->getAssets().getSound("Title").stop();
-				game->changeScene("PLAY", new Scene_Zelda(game, levelPaths[selectedMenuIndex]));
+			if (menuStrings[selectedMenuIndex] == "Quit") {
+				game->quit();
 			}
 			else {
 				onEnd();
-			}
-		}
-		else if (action.getName() == "EDIT") 
-		{
-			if (menuStrings[selectedMenuIndex] != "Quit") {
-				game->getAssets().getSound("Title").stop();
-				game->changeScene("EDIT", new Scene_LevelEditor(game, levelPaths[selectedMenuIndex]));
-			}
-			else {
-				game->changeScene("EDIT", new Scene_End(game));
 			}
 		}
 		else if (action.getName() == "QUIT")
@@ -90,12 +76,15 @@ void Scene_Menu::sDoAction(const Action& action)
 	}
 }
 
-void Scene_Menu::onEnd()
+void Scene_End::onEnd()
 {
-	game->quit();
+	game->getAssets().getSound("Music").stop();
+	game->getAssets().getSound("Title").play();
+	game->getAssets().getSound("Title").setLoop(1);
+	game->changeScene("MENU", new Scene_Menu(game), true);
 }
 
-void Scene_Menu::sAnimation() {
+void Scene_End::sAnimation() {
 	for (auto& entity : entityManager.getEntities()) {
 		if (entity->has<CAnimation>()) {
 			auto& animComponent = entity->get<CAnimation>();
@@ -107,10 +96,16 @@ void Scene_Menu::sAnimation() {
 	}
 }
 
-void Scene_Menu::sRender()
+void Scene_End::sRender()
 {
 	game->getWindow().setView(game->getWindow().getDefaultView());
 	game->getWindow().clear(sf::Color(100, 65, 165));
+
+	float winTextWidth = winText.getLocalBounds().width;
+	float windowWidth = game->getWindow().getSize().x;
+	float xPos = (windowWidth - winTextWidth) / 2.0f;
+	winText.setPosition(sf::Vector2f(xPos, 100.0f));
+	game->getWindow().draw(winText);
 
 	menuText.setString(title);
 	menuText.setFillColor(sf::Color::Black);
@@ -178,6 +173,7 @@ void Scene_Menu::sRender()
 		}
 
 		game->getWindow().draw(menuText);
+		game->getWindow().draw(winText);
 	}
 
 	menuText.setCharacterSize(24);
@@ -187,11 +183,11 @@ void Scene_Menu::sRender()
 	game->getWindow().display();
 }
 
-void Scene_Menu::loadMenuBackground() {
+void Scene_End::loadMenuBackground() {
 	entityManager = EntityManager();
 
 	ifstream fin;
-	fin.open("Menu.json");
+	fin.open("End.json");
 	json j;
 	fin >> j;
 	for (int i = 0; i < j["entities"].size(); i++)

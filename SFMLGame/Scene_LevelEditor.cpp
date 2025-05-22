@@ -228,7 +228,7 @@ void Scene_LevelEditor::sDragAndDrop() {
     }
 
     // Create new entity if selected
-    if (selectedAnimationName != "none" && selectedAnimation || selectedAnimationName != "none" && continuePlacing && selectedEntity->get<CDraggable>().dragging == false) {
+    if (selectedAnimationName != "none" && selectedAnimation || selectedAnimationName != "none" && continuePlacing && selectedEntity != nullptr && selectedEntity->get<CDraggable>().dragging == false) {
         followMouse = true;
         selectedAnimation = false;
         selectedEntity = entityManager.addEntity("tile");
@@ -268,6 +268,7 @@ void Scene_LevelEditor::sDragAndDrop() {
         // Or if it should place
         else if (isLeftMousePressed && e->get<CDraggable>().dragging == true && !leftPressed && !ImGui::GetIO().WantCaptureMouse) {
             e->get<CDraggable>().dragging = false;
+            break;
         }
         // Select entity without picking it back up
         if (isRightMousePressed && !ImGui::GetIO().WantCaptureMouse) {
@@ -349,12 +350,12 @@ void Scene_LevelEditor::sRender() {
 
     // draw all Entity textures and animations
     if (drawTextures) {
-        for (auto e : entityManager.getEntities()) {
+        for (auto e : entityManager.getEntities("tile")) {
             auto& transform = e->get<CTransform>();
             sf::Color c = sf::Color::White;
 
-            if (e->has<CInvincibility>()) {
-                c = sf::Color(255, 255, 255, 128);
+            if (paused) {
+                c = sf::Color::Blue;
             }
 
             if (e->has<CAnimation>()) {
@@ -364,6 +365,29 @@ void Scene_LevelEditor::sRender() {
                 animation.getSprite().setScale(transform.scale.x, transform.scale.y);
                 animation.getSprite().setColor(c);
                 game->getWindow().draw(animation.getSprite());
+            }
+        }
+
+        for (auto e : entityManager.getEntities()) {
+            if (e->tag() != "tile") {
+                auto& transform = e->get<CTransform>();
+                sf::Color c = sf::Color::White;
+
+                if (paused) {
+                    c = sf::Color::Blue;
+                }
+                if (e->has<CInvincibility>()) {
+                    c = sf::Color(255, 255, 255, 128);
+                }
+
+                if (e->has<CAnimation>()) {
+                    auto& animation = e->get<CAnimation>().animation;
+                    animation.getSprite().setRotation(transform.angle);
+                    animation.getSprite().setPosition(transform.pos.x, transform.pos.y);
+                    animation.getSprite().setScale(transform.scale.x, transform.scale.y);
+                    animation.getSprite().setColor(c);
+                    game->getWindow().draw(animation.getSprite());
+                }
             }
         }
 
@@ -458,18 +482,13 @@ void Scene_LevelEditor::sRender() {
                 }
             }
 
-        //    if (e->has<CChasePlayer>()) {
-        //        sf::VertexArray lines(sf::LinesStrip, 2);
-        //        lines[0].position.x = e->get<CTransform>().pos.x;
-        //        lines[0].position.y = e->get<CTransform>().pos.y;
-        //        lines[0].color = sf::Color::Black;
-        //        lines[1].position.x = player()->get<CTransform>().pos.x;
-        //        lines[1].position.y = player()->get<CTransform>().pos.y;
-        //        lines[1].color = sf::Color::Black;
-        //        game->getWindow().draw(lines);
-        //        dot.setPosition(e->get<CChasePlayer>().home.x, e->get<CChasePlayer>().home.y);
-        //        game->getWindow().draw(dot);
-        //    }
+            if (e->has<CChasePlayer>()) {
+                sf::VertexArray lines(sf::LinesStrip, 2);
+                dot.setPosition(e->get<CTransform>().pos.x, e->get<CTransform>().pos.y);
+                game->getWindow().draw(lines);
+                dot.setPosition(e->get<CChasePlayer>().home.x, e->get<CChasePlayer>().home.y);
+                game->getWindow().draw(dot);
+            }
         }
     }
     ImGui::SFML::Render(game->getWindow());

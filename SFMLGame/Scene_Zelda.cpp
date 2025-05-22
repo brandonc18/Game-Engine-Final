@@ -516,7 +516,10 @@ void Scene_Zelda::sDoAction(const Action &action) {
 void Scene_Zelda::sAI() {
     //find the npcs and set their AI pattern
     for (auto npc : entityManager.getEntities("npc")) {
-        if (npc->has<CPatrol>()) {
+        if (npc->has<CPatrol>() && npc->has<CChasePlayer>()) {
+
+        }
+        else if (npc->has<CPatrol>()) {
             patrolAI(npc);
         }
         else if (npc->has<CChasePlayer>()) {
@@ -991,28 +994,57 @@ void Scene_Zelda::onEnd() {
 }
 
 void Scene_Zelda::sRender() {
-  game->getWindow().clear(sf::Color(255, 192, 122));
+  if (!paused) {
+    game->getWindow().clear(sf::Color(255, 192, 122));
+  }
+  else {
+    game->getWindow().clear(sf::Color(50, 50, 130));
+  }
   sf::RectangleShape tick({1.0f, 6.0f});
   tick.setFillColor(sf::Color::Black);
 
   // draw all Entity textures and animations
   if (drawTextures) {
+
+    for (auto e : entityManager.getEntities("tile")) {
+        auto& transform = e->get<CTransform>();
+        sf::Color c = sf::Color::White;
+
+        if (paused) {
+            c = sf::Color::Blue;
+        }
+
+        if (e->has<CAnimation>()) {
+            auto& animation = e->get<CAnimation>().animation;
+            animation.getSprite().setRotation(transform.angle);
+            animation.getSprite().setPosition(transform.pos.x, transform.pos.y);
+            animation.getSprite().setScale(transform.scale.x, transform.scale.y);
+            animation.getSprite().setColor(c);
+            game->getWindow().draw(animation.getSprite());
+        }
+    }
+
     for (auto e : entityManager.getEntities()) {
-      auto &transform = e->get<CTransform>();
-      sf::Color c = sf::Color::White;
+        if (e->tag() != "tile") {
+            auto& transform = e->get<CTransform>();
+            sf::Color c = sf::Color::White;
 
-      if (e->has<CInvincibility>()) {
-        c = sf::Color(255, 255, 255, 128);
-      }
+            if (paused) {
+                c = sf::Color::Blue;
+            }
+            if (e->has<CInvincibility>()) {
+                c = sf::Color(255, 255, 255, 128);
+            }
 
-      if (e->has<CAnimation>()) {
-        auto &animation = e->get<CAnimation>().animation;
-        animation.getSprite().setRotation(transform.angle);
-        animation.getSprite().setPosition(transform.pos.x, transform.pos.y);
-        animation.getSprite().setScale(transform.scale.x, transform.scale.y);
-        animation.getSprite().setColor(c);
-        game->getWindow().draw(animation.getSprite());
-      }
+            if (e->has<CAnimation>()) {
+                auto& animation = e->get<CAnimation>().animation;
+                animation.getSprite().setRotation(transform.angle);
+                animation.getSprite().setPosition(transform.pos.x, transform.pos.y);
+                animation.getSprite().setScale(transform.scale.x, transform.scale.y);
+                animation.getSprite().setColor(c);
+                game->getWindow().draw(animation.getSprite());
+            }
+        }
     }
 
     for (auto e : entityManager.getEntities()) {
@@ -1257,7 +1289,7 @@ void Scene_Zelda::sGUI() {
 }
 
 void Scene_Zelda::sPausedGUI() {
-    // quit, resume, save, main menu
+    // resume, save, main menu, and quit
     if (paused) {
         // Center the window on the screen
         ImVec2 screenSize = ImGui::GetIO().DisplaySize;
