@@ -161,7 +161,7 @@ Texture WaterTopRight textures\WaterTopRight.png
 Texture Snake textures\Snake.png
 Texture Slime textures\Slime.png
 Texture SnakeBoss textures\SnakeBoss.png
-
+Texture LongswordSide textures\LongswordSide.png
 
 Animation Bonfire Bonfire 4 8
 Animation BrokenTree BrokenTree 1 0
@@ -249,3 +249,4 @@ Animation WaterTopRight WaterTopRight 1 0
 Animation Snake Snake 1 0
 Animation Slime Slime 1 0
 Animation SnakeBoss SnakeBoss 1 0
+Animation LongswordSide LongswordSide 1 0

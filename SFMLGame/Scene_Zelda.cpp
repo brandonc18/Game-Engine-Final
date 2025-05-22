@@ -321,6 +321,7 @@ void Scene_Zelda::spawnSword(Entity *entity) {
     }
     // down
     else {
+        sword->get<CTransform>().scale.y = -1;
         player()->get<CState>().state = "AtkDown";
         sword->get<CState>().state = "SwordDown";
         sword->get<CTransform>().pos.y += gridSize.y;

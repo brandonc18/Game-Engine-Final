@@ -247,6 +247,62 @@
             ],
             "id": 4,
             "tag": "tile"
+        },
+        {
+            "components": [
+                {
+                    "scaleX": 1.0,
+                    "scaleY": 1.0,
+                    "type": "CTransform",
+                    "x": 328.0,
+                    "y": 363.0
+                },
+                {
+                    "name": "RockMonument",
+                    "type": "CAnimation"
+                },
+                {
+                    "exists": true,
+                    "move": false,
+                    "type": "CBoundingBox",
+                    "vision": true,
+                    "x": 192.0,
+                    "y": 192.0
+                },
+                {
+                    "exists": false,
+                    "type": "CHealth"
+                },
+                {
+                    "exists": false,
+                    "type": "CDamage"
+                },
+                {
+                    "exists": false,
+                    "type": "CChasePlayer"
+                },
+                {
+                    "exists": true,
+                    "positions": [
+                        [
+                            497.8999938964844,
+                            363.0
+                        ],
+                        [
+                            22.200000762939453,
+                            363.0
+                        ]
+                    ],
+                    "speed": 3.0,
+                    "type": "CPatrol"
+                },
+                {
+                    "exists": false,
+                    "type": "CInput"
+                }
+            ],
+            "id": 5,
+            "tag": "npc"
         }
     ]
 }
