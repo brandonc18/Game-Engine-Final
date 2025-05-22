@@ -187,6 +187,7 @@ public:
 	bool canRun = true;
 	int speed = 0;
 	int teleportCooldown = 0;
+	int bulletCooldown = 0;
 };
 
 class CDraggable : public Component

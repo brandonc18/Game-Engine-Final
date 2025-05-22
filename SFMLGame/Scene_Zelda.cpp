@@ -100,6 +100,20 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
         if (e->tag() == "player")
             e->add<CState>();
     }
+
+    //instantiate the bullet config
+    bulletConfig.SR = 10;
+    bulletConfig.CR = 10;
+    bulletConfig.S = 20;
+    bulletConfig.FR = 255;
+    bulletConfig.FG = 255;
+    bulletConfig.FB = 255;
+    bulletConfig.OR = 255;
+    bulletConfig.OG = 255;
+    bulletConfig.OB = 255;
+    bulletConfig.OT = 2;
+    bulletConfig.V = 20;
+    bulletConfig.L = 90;
 }
 
 void Scene_Zelda::loadLevel(const string &filename) {
@@ -324,6 +338,47 @@ void Scene_Zelda::spawnSword(Entity *entity) {
     player()->get<CInput>().canRun = false;
 }
 
+void Scene_Zelda::spawnBullet(Entity* entity)
+{
+    cout << "spawn bullet" << endl;
+    //TODO spawn bullet where mouse clicks using config values
+    auto bullet = entityManager.addEntity("bullet");
+    bullet->add<CTransform>(entity->get<CTransform>().pos);
+    Vec2i mousePixelPos = sf::Mouse::getPosition(game->getWindow());
+    Vec2f mouseWorldPos = game->getWindow().mapPixelToCoords(mousePixelPos);
+    //find vector to give to bullet
+    //	bullet speed is given as a scalar
+    //	must set velocity by using formula in 2D math lecture
+    //bullet if entity is the player
+    if (entity->tag() == "player")
+    {
+        float speed = bulletConfig.S;
+        Vec2f diffD = Vec2f(mouseWorldPos.x - player()->get<CTransform>().pos.x, mouseWorldPos.y - player()->get<CTransform>().pos.y);
+        float distance = player()->get<CTransform>().pos.dist(mouseWorldPos);
+        float cos = diffD.x / distance;
+        float sin = diffD.y / distance;
+        Vec2f velocity = Vec2f(speed * cos, speed * sin);
+        bullet->get<CTransform>().velocity = velocity;
+    }
+    else if (entity->tag() == "npc")
+    {
+        float speed = bulletConfig.S;
+        Vec2f diffD = Vec2f(player()->get<CTransform>().pos.x - entity->get<CTransform>().pos.x, player()->get<CTransform>().pos.y - entity->get<CTransform>().pos.y);
+        float distance = entity->get<CTransform>().pos.dist(player()->get<CTransform>().pos);
+        float cos = diffD.x / distance;
+        float sin = diffD.y / distance;
+        Vec2f velocity = Vec2f(speed * cos, speed * sin);
+        bullet->get<CTransform>().velocity = velocity;
+    }
+
+    //initialize bullet
+    bullet->get<CState>().state = "Bullet";
+    bullet->add<CAnimation>(game->getAssets().getAnimation(bullet->get<CState>().state), true);
+    bullet->add<CBoundingBox>(game->getAssets().getAnimation(bullet->get<CState>().state).getSize());
+    bullet->add<CLifespan>(bulletConfig.L);
+    bullet->add<CDamage>(1);
+}
+
 void Scene_Zelda::update() {
   entityManager.update();
   if (entityManager.getEntities("player").size() <= 0)
@@ -481,6 +536,21 @@ void Scene_Zelda::sMovement() {
           player()->get<CTransform>().pos = mouseWorldPos;
           player()->get<CInput>().teleportCooldown = 180;
       }
+  }
+
+  player()->get<CInput>().bulletCooldown--;
+  //shoot a bullet if the player presses the left mouse button
+  bool isLeftMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+  if (isLeftMousePressed && player()->get<CInput>().bulletCooldown <= 0)
+  {
+      spawnBullet(player());
+      player()->get<CInput>().bulletCooldown = 15;
+  }
+
+  //Movement for bullets
+  for (int i = 0; i < entityManager.getEntities("bullet").size(); i++)
+  {
+      entityManager.getEntities("bullet")[i]->get<CTransform>().pos += entityManager.getEntities("bullet")[i]->get<CTransform>().velocity;
   }
 }
 

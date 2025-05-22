@@ -20,6 +20,10 @@ class Scene_Zelda : public Scene
 		int RX, RY, TX, TY;
 		bool BM, BV, M;
 	};
+	struct BulletConfig 
+	{ 
+		int SR, CR, FR, FG, FB, OR, OG, OB, OT, V, L; float S; 
+	};
 
 public:
 	Scene_Zelda(GameEngine* gameEngine, const string& levelPath);
@@ -47,6 +51,7 @@ protected:
 	Vec2f getPosition(int rx, int ry, int tx, int ty) const;
 	void spawnPlayer();
 	void spawnSword(Entity* entity);
+	void spawnBullet(Entity* entity);
 
 	int width();
 	int height();
@@ -56,6 +61,7 @@ protected:
 	PlayerConfig playerConfig;
 	Tile tileConfig;
 	NPCConfig NPC;
+	BulletConfig bulletConfig;
 	bool follow = true;
 	bool drawTextures = true;
 	bool drawCollision = false;
