@@ -278,13 +278,18 @@ Vec2f Scene_Zelda::getPosition(int rx, int ry, int tx, int ty) const {
 
 void Scene_Zelda::spawnPlayer() {
   // here is a sample player entity which you can use to contruct other entities
+    playerConfig.X = player()->get<CTransform>().pos.x;
+    playerConfig.Y = player()->get<CTransform>().pos.y;
+    playerConfig.BY = 0;
+    playerConfig.BX = 0;
+    playerConfig.SPEED = player()->get<CInput>().speed;
   auto player = entityManager.addEntity("player");
-  player->add<CAnimation>(game->getAssets().getAnimation("StandDown"), true);
+  player->add<CAnimation>(game->getAssets().getAnimation("HeroIdleDown"), true);
   player->add<CTransform>(Vec2f(playerConfig.X, playerConfig.Y));
   player->get<CTransform>().prevPos = player->get<CTransform>().pos;
   player->add<CBoundingBox>(Vec2f(playerConfig.BX, playerConfig.BY), true, false);
   player->add<CHealth>(playerConfig.HEALTH, playerConfig.HEALTH);
-  player->add<CState>().state = "StandDown";
+  player->add<CState>().state = "HeroIdleDown";
   // Implement this function so that it uses the parameters input from the level file
   // Those parameters should be stored in playerConfig variable
 }
