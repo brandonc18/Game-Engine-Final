@@ -342,7 +342,7 @@ void Scene_Zelda::spawnBullet(Entity* entity)
     //bullet if entity is the player
     if (entity->tag() == "player")
     {
-        bullet->get<CInput>().fromPlayer == true;
+        bullet->get<CInput>().fromPlayer = true;
         float speed = bulletConfig.S;
         Vec2f diffD = Vec2f(mouseWorldPos.x - player()->get<CTransform>().pos.x, mouseWorldPos.y - player()->get<CTransform>().pos.y);
         float distance = player()->get<CTransform>().pos.dist(mouseWorldPos);
@@ -353,7 +353,7 @@ void Scene_Zelda::spawnBullet(Entity* entity)
     }
     else if (entity->tag() == "npc")
     {
-        bullet->get<CInput>().fromPlayer == false;
+        bullet->get<CInput>().fromPlayer = false;
         float speed = bulletConfig.S;
         Vec2f diffD = Vec2f(player()->get<CTransform>().pos.x - entity->get<CTransform>().pos.x, player()->get<CTransform>().pos.y - entity->get<CTransform>().pos.y);
         float distance = entity->get<CTransform>().pos.dist(player()->get<CTransform>().pos);
@@ -904,7 +904,7 @@ void Scene_Zelda::sCollision() {
               {
                   entityManager.getEntities()[i]->destroy();
               }
-              else if (collides && entityManager.getEntities()[j]->tag() == "npc")
+              else if (collides && entityManager.getEntities()[j]->tag() == "npc" && entityManager.getEntities()[i]->get<CInput>().fromPlayer == true)
               {
                   if (entityManager.getEntities()[j]->get<CHealth>().exists && entityManager.getEntities()[i]->get<CDamage>().exists)
                   {
@@ -919,7 +919,7 @@ void Scene_Zelda::sCollision() {
                       game->getAssets().getSound("EnemyDie").play();
                   }
               }
-              else if (collides && entityManager.getEntities()[j]->tag() == "npc")
+              else if (collides && entityManager.getEntities()[j]->tag() == "player" && entityManager.getEntities()[i]->get<CInput>().fromPlayer == false)
               {
                   if (entityManager.getEntities()[j]->get<CHealth>().exists && entityManager.getEntities()[i]->get<CDamage>().exists)
                   {
