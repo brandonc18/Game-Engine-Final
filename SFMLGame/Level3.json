@@ -90,7 +90,18 @@
                     "type": "CChasePlayer"
                 },
                 {
-                    "exists": false,
+                    "exists": true,
+                    "positions": [
+                        [
+                            249.60000610351563,
+                            559.2000122070313
+                        ],
+                        [
+                            499.3999938964844,
+                            556.0
+                        ]
+                    ],
+                    "speed": 1.0,
                     "type": "CPatrol"
                 },
                 {
@@ -99,7 +110,7 @@
                 }
             ],
             "id": 1,
-            "tag": "tile"
+            "tag": "npc"
         },
         {
             "components": [
@@ -116,9 +127,9 @@
                 },
                 {
                     "exists": true,
-                    "move": false,
+                    "move": true,
                     "type": "CBoundingBox",
-                    "vision": false,
+                    "vision": true,
                     "x": 64.0,
                     "y": 64.0
                 },
@@ -161,7 +172,7 @@
                 },
                 {
                     "exists": true,
-                    "move": true,
+                    "move": false,
                     "type": "CBoundingBox",
                     "vision": false,
                     "x": 64.0,
@@ -206,7 +217,7 @@
                 },
                 {
                     "exists": true,
-                    "move": true,
+                    "move": false,
                     "type": "CBoundingBox",
                     "vision": false,
                     "x": 64.0,

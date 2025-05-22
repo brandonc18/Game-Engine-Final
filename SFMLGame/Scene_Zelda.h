@@ -38,6 +38,7 @@ protected:
 	void patrolAI(Entity* npc);
 	void chaseHelper(Entity* npc, Vec2f desiredPos);
 	void chasePlayer(Entity* npc);
+	void chasePatrolAI(Entity* npc);
 	void sAI();
 	void sStatus();
 	void sCamera();
