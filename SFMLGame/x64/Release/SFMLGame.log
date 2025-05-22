@@ -64,26 +64,26 @@ C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Fin
   (compiling source file 'Scene_Zelda.cpp')
   
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(29,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(144,37): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(144,37): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(144,37): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(144,37): warning C4244:             T=float
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(144,37): warning C4244:         ]
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(144,34): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(144,34): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(144,34): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(144,34): warning C4244:             T=float
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(144,34): warning C4244:         ]
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(447,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(501,18): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(955,73): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(955,73): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(955,73): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(955,73): warning C4244:             T=float
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(955,73): warning C4244:         ]
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1068,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1108,42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1145,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,37): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,37): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,37): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,37): warning C4244:             T=float
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,37): warning C4244:         ]
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,34): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,34): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,34): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,34): warning C4244:             T=float
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,34): warning C4244:         ]
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(594,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(648,18): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1169,73): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1169,73): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1169,73): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1169,73): warning C4244:             T=float
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1169,73): warning C4244:         ]
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1282,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1322,42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1359,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Entity.h(50,31): warning C4244: 'argument': conversion from 'TargetType' to 'int', possible loss of data
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Entity.h(50,31): warning C4244:         with
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Entity.h(50,31): warning C4244:         [
@@ -92,7 +92,7 @@ C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Fin
   (compiling source file 'Scene_Zelda.cpp')
       C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Entity.h(50,31):
       the template instantiation context (the oldest one first) is
-          C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(194,11):
+          C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(281,11):
           see reference to function template instantiation 'T &Entity::add<CHealth,float&,float&>(float &,float &)' being compiled
           with
           [
@@ -100,8 +100,8 @@ C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Fin
           ]
   
   Generating code
-  1 of 4751 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  5 of 4758 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    42 functions had inline decision re-evaluated but remain unchanged
+    59 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SFMLGame.vcxproj -> C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\x64\Release\SFMLGame.exe

@@ -100,6 +100,10 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
         if (e->tag() == "player")
             e->add<CState>();
     }
+
+    //instantiate the bullet config
+    bulletConfig.S = 20;
+    bulletConfig.L = 90;
 }
 
 void Scene_Zelda::loadLevel(const string &filename) {
@@ -324,6 +328,49 @@ void Scene_Zelda::spawnSword(Entity *entity) {
     player()->get<CInput>().canRun = false;
 }
 
+void Scene_Zelda::spawnBullet(Entity* entity)
+{
+    cout << "spawn bullet" << endl;
+    //TODO spawn bullet where mouse clicks using config values
+    auto bullet = entityManager.addEntity("bullet");
+    bullet->add<CTransform>(entity->get<CTransform>().pos);
+    Vec2i mousePixelPos = sf::Mouse::getPosition(game->getWindow());
+    Vec2f mouseWorldPos = game->getWindow().mapPixelToCoords(mousePixelPos);
+    //find vector to give to bullet
+    //	bullet speed is given as a scalar
+    //	must set velocity by using formula in 2D math lecture
+    //bullet if entity is the player
+    if (entity->tag() == "player")
+    {
+        bullet->get<CInput>().fromPlayer = true;
+        float speed = bulletConfig.S;
+        Vec2f diffD = Vec2f(mouseWorldPos.x - player()->get<CTransform>().pos.x, mouseWorldPos.y - player()->get<CTransform>().pos.y);
+        float distance = player()->get<CTransform>().pos.dist(mouseWorldPos);
+        float cos = diffD.x / distance;
+        float sin = diffD.y / distance;
+        Vec2f velocity = Vec2f(speed * cos, speed * sin);
+        bullet->get<CTransform>().velocity = velocity;
+    }
+    else if (entity->tag() == "npc")
+    {
+        bullet->get<CInput>().fromPlayer = false;
+        float speed = bulletConfig.S;
+        Vec2f diffD = Vec2f(player()->get<CTransform>().pos.x - entity->get<CTransform>().pos.x, player()->get<CTransform>().pos.y - entity->get<CTransform>().pos.y);
+        float distance = entity->get<CTransform>().pos.dist(player()->get<CTransform>().pos);
+        float cos = diffD.x / distance;
+        float sin = diffD.y / distance;
+        Vec2f velocity = Vec2f(speed * cos, speed * sin);
+        bullet->get<CTransform>().velocity = velocity;
+    }
+
+    //initialize bullet
+    bullet->get<CState>().state = "Bullet";
+    bullet->add<CAnimation>(game->getAssets().getAnimation(bullet->get<CState>().state), true);
+    bullet->add<CBoundingBox>(game->getAssets().getAnimation(bullet->get<CState>().state).getSize());
+    bullet->add<CLifespan>(bulletConfig.L);
+    bullet->add<CDamage>(1);
+}
+
 void Scene_Zelda::update() {
   entityManager.update();
   if (entityManager.getEntities("player").size() <= 0)
@@ -482,6 +529,21 @@ void Scene_Zelda::sMovement() {
           player()->get<CTransform>().pos = mouseWorldPos;
           player()->get<CInput>().teleportCooldown = 180;
       }
+  }
+
+  player()->get<CInput>().bulletCooldown--;
+  //shoot a bullet if the player presses the left mouse button
+  bool isLeftMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+  if (isLeftMousePressed && player()->get<CInput>().bulletCooldown <= 0)
+  {
+      spawnBullet(player());
+      player()->get<CInput>().bulletCooldown = 15;
+  }
+
+  //Movement for bullets
+  for (int i = 0; i < entityManager.getEntities("bullet").size(); i++)
+  {
+      entityManager.getEntities("bullet")[i]->get<CTransform>().pos += entityManager.getEntities("bullet")[i]->get<CTransform>().velocity;
   }
 }
 
@@ -812,6 +874,73 @@ void Scene_Zelda::sCollision() {
           }
       }
   }
+
+  //Collision checks for Bullets
+  for (int i = 0; i < entityManager.getEntities().size(); i++)
+  {
+      if (entityManager.getEntities()[i]->tag() == "bullet")
+      {
+          //check collisions
+          for (int j = 0; j < entityManager.getEntities().size(); j++)
+          {
+              //setup variable for player's collision box
+              entityABox = entityManager.getEntities()[i]->get<CBoundingBox>().size;
+              entityAPos = entityManager.getEntities()[i]->get<CTransform>().pos;
+              //setup variables for the other entities collision box
+              entityBBox = entityManager.getEntities()[j]->get<CBoundingBox>().size;
+              entityBPos = entityManager.getEntities()[j]->get<CTransform>().pos;
+              //the collision bool will always start as false
+              bool collides = false;
+              //get the distance between the positions of the entities on the x and y axis
+              float distanceX = abs(entityBPos.x - entityAPos.x);
+              float distanceY = abs(entityBPos.y - entityAPos.y);
+              //set overlaps here instead of only when it collides to set the num of tiles under the player
+              overlap = Physics::GetOverlap(entityManager.getEntities()[i], entityManager.getEntities()[j]);
+              prevOverlap = Physics::GetPreviousOverlap(entityManager.getEntities()[i], entityManager.getEntities()[j]);
+              if (overlap.x > 0 && overlap.y > 0 && entityManager.getEntities()[j]->tag() != "bullet" && entityManager.getEntities()[j]->get<CBoundingBox>().exists)
+              {
+                  collides = true;
+              }
+              else {}
+
+              if (collides && entityManager.getEntities()[j]->tag() == "tile" && entityManager.getEntities()[j]->get<CBoundingBox>().blockMove == true)
+              {
+                  entityManager.getEntities()[i]->destroy();
+              }
+              else if (collides && entityManager.getEntities()[j]->tag() == "npc" && entityManager.getEntities()[i]->get<CInput>().fromPlayer == true)
+              {
+                  if (entityManager.getEntities()[j]->get<CHealth>().exists && entityManager.getEntities()[i]->get<CDamage>().exists)
+                  {
+                      entityManager.getEntities()[j]->get<CHealth>().current -= entityManager.getEntities()[i]->get<CDamage>().damage;
+                      entityManager.getEntities()[i]->get<CDamage>().exists = false;
+                      entityManager.getEntities()[i]->destroy();
+                      game->getAssets().getSound("EnemyHit").play();
+                  }
+                  if (entityManager.getEntities()[j]->get<CHealth>().current <= 0)
+                  {
+                      entityManager.getEntities()[j]->destroy();
+                      game->getAssets().getSound("EnemyDie").play();
+                  }
+              }
+              else if (collides && entityManager.getEntities()[j]->tag() == "player" && entityManager.getEntities()[i]->get<CInput>().fromPlayer == false)
+              {
+                  if (entityManager.getEntities()[j]->get<CHealth>().exists && entityManager.getEntities()[i]->get<CDamage>().exists)
+                  {
+                      entityManager.getEntities()[j]->get<CHealth>().current -= entityManager.getEntities()[i]->get<CDamage>().damage;
+                      entityManager.getEntities()[i]->get<CDamage>().exists = false;
+                      entityManager.getEntities()[i]->destroy();
+                      game->getAssets().getSound("EnemyHit").play();
+                  }
+                  if (entityManager.getEntities()[j]->get<CHealth>().current <= 0)
+                  {
+                      entityManager.getEntities()[j]->destroy();
+                      game->getAssets().getSound("EnemyDie").play();
+                  }
+              }
+          }
+      }
+  }
+
   //Collision checks for NPC's
   for (int i = 0; i < entityManager.getEntities().size(); i++)
   {
