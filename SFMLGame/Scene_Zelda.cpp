@@ -105,9 +105,9 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
     bulletConfig.S = 20;
     bulletConfig.L = 90;
     //player config for potions
-    playerConfig.HP = 1;
-    playerConfig.SPP = 1;
-    playerConfig.STP = 1;
+    playerConfig.HP = 3;
+    playerConfig.SPP = 3;
+    playerConfig.STP = 3;
     playerConfig.INVINCP = 1;
 }
 
@@ -624,7 +624,6 @@ void Scene_Zelda::chasePatrolAI(Entity* npc) {
     }
 }
 
-
 void Scene_Zelda::patrolAI(Entity* npc) {
     // traverse the nodes
     auto& currentPos = npc->get<CTransform>().pos;
@@ -843,7 +842,7 @@ void Scene_Zelda::sCollision() {
       }
 
       //if the player collides with a tile, make a reolution on what it should do
-      if (collides && entityManager.getEntities()[i]->tag() == "tile" && entityManager.getEntities()[i]->get<CBoundingBox>().blockMove == true)
+      if (collides && entityManager.getEntities()[i]->tag() == "tile" && entityManager.getEntities()[i]->get<CBoundingBox>().blockMove == true || entityManager.getEntities()[i]->get<CAnimation>().animation.getName() == "DarkBrickStairs")
       {
           //vertical collision
           if (overlap.y > 0 && prevOverlap.x > 0)
@@ -885,7 +884,7 @@ void Scene_Zelda::sCollision() {
       }
 
       //NPC collisions
-      if (collides && entityManager.getEntities()[i]->tag() == "npc")
+      if (collides && entityManager.getEntities()[i]->tag() == "npc" && entityManager.getEntities()[i]->get<CAnimation>().animation.getName() != "DarkBrickStairs")
       {
           if (!player()->get<CInvincibility>().exists)
           {
