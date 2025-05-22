@@ -741,7 +741,7 @@ void Scene_Zelda::sStatus()
     //Health Potion
     if (playerConfig.HP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && player()->get<CHealth>().current < player()->get<CHealth>().max)
     {
-
+        cout << "Health" << endl;
         playerConfig.HP--;
         player()->get<CHealth>().current = player()->get<CHealth>().max;
     }
@@ -750,6 +750,7 @@ void Scene_Zelda::sStatus()
     if (player()->get<CInput>().speedBuffTimer <= 0) { player()->get<CInput>().speed = 1; }
     if (playerConfig.SPP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && player()->get<CInput>().speedBuffTimer <= 0)
     {
+        cout << "speed" << endl;
         player()->get<CInput>().speed = 2;
         player()->get<CInput>().speedBuffTimer = 300;
     }
@@ -759,6 +760,7 @@ void Scene_Zelda::sStatus()
     if (player()->get<CInput>().strengthBuffTimer <= 0) { player()->get<CInput>().strengthBuff = 0; }
     if (playerConfig.STP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num3) && player()->get<CInput>().strengthBuffTimer <= 0)
     {
+        cout << "strength" << endl;
         player()->get<CInput>().strengthBuff = 1;
         player()->get<CInput>().strengthBuffTimer = 420;
     }
@@ -767,6 +769,7 @@ void Scene_Zelda::sStatus()
     //Invincibility Potion
     if (playerConfig.INVINCP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num4) && !player()->get<CInvincibility>().exists)
     {
+        cout << "invincibility" << endl;
         player()->add<CInvincibility>(600);
     }
 }
