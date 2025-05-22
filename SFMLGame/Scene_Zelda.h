@@ -6,7 +6,6 @@ class Scene_Zelda : public Scene
 	{
 		float X, Y, BX, BY, SPEED, HEALTH;
 		int HP, SPP, STP, INVINCP;
-		bool isVisible;
 	};
 	struct NPCConfig
 	{

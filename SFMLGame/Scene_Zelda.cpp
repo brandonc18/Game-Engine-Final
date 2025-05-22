@@ -104,6 +104,11 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
     //instantiate the bullet config
     bulletConfig.S = 20;
     bulletConfig.L = 90;
+    //player config for potions
+    playerConfig.HP = 1;
+    playerConfig.SPP = 1;
+    playerConfig.STP = 1;
+    playerConfig.INVINCP = 1;
 }
 
 void Scene_Zelda::loadLevel(const string &filename) {
@@ -734,15 +739,16 @@ void Scene_Zelda::sStatus()
     }
 
     //Health Potion
-    if (playerConfig.HP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
+    if (playerConfig.HP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && player()->get<CHealth>().current < player()->get<CHealth>().max)
     {
+
         playerConfig.HP--;
         player()->get<CHealth>().current = player()->get<CHealth>().max;
     }
 
     //Speed Potion
     if (player()->get<CInput>().speedBuffTimer <= 0) { player()->get<CInput>().speed = 1; }
-    if (playerConfig.SPP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num6) && player()->get<CInput>().speedBuffTimer <= 0)
+    if (playerConfig.SPP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && player()->get<CInput>().speedBuffTimer <= 0)
     {
         player()->get<CInput>().speed = 2;
         player()->get<CInput>().speedBuffTimer = 300;
@@ -750,13 +756,16 @@ void Scene_Zelda::sStatus()
     if (player()->get<CInput>().speedBuffTimer >= 0) { player()->get<CInput>().speedBuffTimer--; }
 
     //Strength Potion
-    if (playerConfig.STP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num7))
+    if (player()->get<CInput>().strengthBuffTimer <= 0) { player()->get<CInput>().strengthBuff = 0; }
+    if (playerConfig.STP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num3) && player()->get<CInput>().strengthBuffTimer <= 0)
     {
-
+        player()->get<CInput>().strengthBuff = 1;
+        player()->get<CInput>().strengthBuffTimer = 420;
     }
+    if (player()->get<CInput>().strengthBuffTimer >= 0) { player()->get<CInput>().strengthBuffTimer--; }
 
     //Invincibility Potion
-    if (playerConfig.INVINCP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num9) && !player()->get<CInvincibility>().exists)
+    if (playerConfig.INVINCP > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Num4) && !player()->get<CInvincibility>().exists)
     {
         player()->add<CInvincibility>(600);
     }
@@ -968,7 +977,7 @@ void Scene_Zelda::sCollision() {
               {
                   if (entityManager.getEntities()[j]->get<CHealth>().exists && entityManager.getEntities()[i]->get<CDamage>().exists)
                   {
-                      entityManager.getEntities()[j]->get<CHealth>().current -= entityManager.getEntities()[i]->get<CDamage>().damage;
+                      entityManager.getEntities()[j]->get<CHealth>().current -= (entityManager.getEntities()[i]->get<CDamage>().damage + player()->get<CInput>().strengthBuff);
                       entityManager.getEntities()[i]->get<CDamage>().exists = false;
                       entityManager.getEntities()[i]->destroy();
                       game->getAssets().getSound("EnemyHit").play();
@@ -1101,7 +1110,7 @@ void Scene_Zelda::sCollision() {
               {
                   if (entityManager.getEntities()[j]->get<CHealth>().exists && entityManager.getEntities()[i]->get<CDamage>().exists)
                   {
-                      entityManager.getEntities()[j]->get<CHealth>().current -= entityManager.getEntities()[i]->get<CDamage>().damage;
+                      entityManager.getEntities()[j]->get<CHealth>().current -= (entityManager.getEntities()[i]->get<CDamage>().damage + player()->get<CInput>().strengthBuff);
                       entityManager.getEntities()[i]->get<CDamage>().exists = false;
                       game->getAssets().getSound("EnemyHit").play();
                   }

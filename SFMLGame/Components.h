@@ -191,8 +191,7 @@ public:
 	bool fromPlayer = true;
 	int speedBuffTimer = 0;
 	int strengthBuffTimer = 0;
-	int invisibilityBuffTimer = 0;
-	int invincibilityBuffTimer = 0;
+	int strengthBuff = 0;
 };
 
 class CDraggable : public Component
