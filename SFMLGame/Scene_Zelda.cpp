@@ -703,6 +703,36 @@ void Scene_Zelda::sStatus()
             }
         }
     }
+
+    //Health Potion
+    if (playerConfig.HP > 0)
+    {
+
+    }
+
+    //Speed Potion
+    if (playerConfig.SPP > 0)
+    {
+
+    }
+
+    //Strength Potion
+    if (playerConfig.STP > 0)
+    {
+
+    }
+
+    //Invisibility Potion
+    if (playerConfig.INVISP > 0)
+    {
+
+    }
+
+    //Invincibility Potion
+    if (playerConfig.INVINCP > 0)
+    {
+
+    }
 }
 
 void Scene_Zelda::sCollision() {
