@@ -102,17 +102,7 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
     }
 
     //instantiate the bullet config
-    bulletConfig.SR = 10;
-    bulletConfig.CR = 10;
     bulletConfig.S = 20;
-    bulletConfig.FR = 255;
-    bulletConfig.FG = 255;
-    bulletConfig.FB = 255;
-    bulletConfig.OR = 255;
-    bulletConfig.OG = 255;
-    bulletConfig.OB = 255;
-    bulletConfig.OT = 2;
-    bulletConfig.V = 20;
     bulletConfig.L = 90;
 }
 

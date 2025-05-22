@@ -22,7 +22,7 @@ class Scene_Zelda : public Scene
 	};
 	struct BulletConfig 
 	{ 
-		int SR, CR, FR, FG, FB, OR, OG, OB, OT, V, L; float S; 
+		int L; float S; 
 	};
 
 public:
