@@ -1,4 +1,85 @@
-﻿  Scene_Zelda.cpp
+﻿  Scene_End.cpp
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(18,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Scene_End.cpp')
+  
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(18,65): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Scene_End.cpp')
+  
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:             T=float
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         ]
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         and
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:             T=int
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,82): warning C4244:         ]
+  (compiling source file 'Scene_End.cpp')
+  
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:             T=float
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         ]
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         and
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:             T=int
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,74): warning C4244:         ]
+  (compiling source file 'Scene_End.cpp')
+  
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,57): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,57): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,57): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,57): warning C4244:             T=int
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(23,57): warning C4244:         ]
+  (compiling source file 'Scene_End.cpp')
+  
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:             T=float
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         ]
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         and
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:             T=int
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,92): warning C4244:         ]
+  (compiling source file 'Scene_End.cpp')
+  
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:             T=float
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         ]
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         and
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:             T=int
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,84): warning C4244:         ]
+  (compiling source file 'Scene_End.cpp')
+  
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,67): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,67): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,67): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,67): warning C4244:             T=int
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(37,67): warning C4244:         ]
+  (compiling source file 'Scene_End.cpp')
+  
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(57,50): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(105,20): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(105,20): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(105,20): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(105,20): warning C4244:             T=unsigned int
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(105,20): warning C4244:         ]
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(159,21): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(159,21): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(159,21): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(159,21): warning C4244:             T=unsigned int
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(159,21): warning C4244:         ]
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(160,22): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(160,22): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(160,22): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(160,22): warning C4244:             T=unsigned int
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_End.cpp(160,22): warning C4244:         ]
+  Scene_Zelda.cpp
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Animation.h(18,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'Scene_Zelda.cpp')
   
@@ -74,16 +155,16 @@ C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Fin
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,34): warning C4244:         [
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,34): warning C4244:             T=float
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(148,34): warning C4244:         ]
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(594,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(648,18): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1169,73): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1169,73): warning C4244:         with
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1169,73): warning C4244:         [
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1169,73): warning C4244:             T=float
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1169,73): warning C4244:         ]
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1282,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1322,42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1359,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(596,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(650,18): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1230,73): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1230,73): warning C4244:         with
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1230,73): warning C4244:         [
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1230,73): warning C4244:             T=float
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1230,73): warning C4244:         ]
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1343,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1383,42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Scene_Zelda.cpp(1420,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Entity.h(50,31): warning C4244: 'argument': conversion from 'TargetType' to 'int', possible loss of data
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Entity.h(50,31): warning C4244:         with
 C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\SFMLGame\Entity.h(50,31): warning C4244:         [
@@ -100,8 +181,8 @@ C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Fin
           ]
   
   Generating code
-  5 of 4758 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    59 functions had inline decision re-evaluated but remain unchanged
+  1792 of 4769 functions (37.6%) were compiled, the rest were copied from previous compilation.
+    10 functions were new in current compilation
+    257 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SFMLGame.vcxproj -> C:\Users\kstue\Desktop\Game Engine Development\Game-Engine-Final\Game-Engine-Final\x64\Release\SFMLGame.exe
