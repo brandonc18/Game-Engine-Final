@@ -97,8 +97,15 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
         {
             e->add<CInput>(j["entities"][i]["components"][7]["speed"]);
         }
-        if (e->tag() == "player")
+        if (e->tag() == "player") {
             e->add<CState>();
+            playerConfig.X = e->get<CTransform>().pos.x;
+            playerConfig.Y = e->get<CTransform>().pos.y;
+            playerConfig.BX = 0;
+            playerConfig.BY = 0;
+            playerConfig.SPEED = e->get<CInput>().speed;
+            playerConfig.HEALTH = e->get<CHealth>().max;
+        }
     }
 
     //instantiate the bullet config
@@ -277,12 +284,6 @@ Vec2f Scene_Zelda::getPosition(int rx, int ry, int tx, int ty) const {
 }
 
 void Scene_Zelda::spawnPlayer() {
-  // here is a sample player entity which you can use to contruct other entities
-    playerConfig.X = player()->get<CTransform>().pos.x;
-    playerConfig.Y = player()->get<CTransform>().pos.y;
-    playerConfig.BY = 0;
-    playerConfig.BX = 0;
-    playerConfig.SPEED = player()->get<CInput>().speed;
   auto player = entityManager.addEntity("player");
   player->add<CAnimation>(game->getAssets().getAnimation("HeroIdleDown"), true);
   player->add<CTransform>(Vec2f(playerConfig.X, playerConfig.Y));
