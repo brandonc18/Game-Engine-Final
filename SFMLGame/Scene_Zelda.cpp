@@ -364,6 +364,41 @@ void Scene_Zelda::sMovement() {
       spawnSword(player());
       player()->get<CInput>().canAttack = false;
   }
+
+  //check if player is trying to teleport, if teleport is ready and it is a place they can teleport to, then teleport
+  Vec2i mousePixelPos = sf::Mouse::getPosition(game->getWindow());
+  Vec2f mouseWorldPos = game->getWindow().mapPixelToCoords(mousePixelPos);
+  bool isRightMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Right);
+  bool overlap;
+  if (player()->get<CInput>().teleportCooldown > 0) { player()->get<CInput>().teleportCooldown--; }
+  //check if player can teleport and is trying to teleport
+  if (player()->get<CInput>().teleportCooldown <= 0 && isRightMousePressed && mouseWorldPos.dist(player()->get<CTransform>().pos) <= 320)
+  {
+      //check if the player is clicking on a tile that cannot be moved through
+      for (int i = 0; i < entityManager.getEntities().size(); i++)
+      {
+          overlap = Physics::IsInside(mouseWorldPos, entityManager.getEntities()[i]);
+          if (overlap)
+          {
+              if (entityManager.getEntities()[i]->get<CBoundingBox>().blockMove == true)
+              {
+                  cout << mouseWorldPos.x << " , " << mouseWorldPos.y << endl;
+                  break;
+              }
+              else
+              {
+                  player()->get<CTransform>().pos = mouseWorldPos;
+                  player()->get<CInput>().teleportCooldown = 180;
+                  break;
+              }
+          }
+      }
+      if (!overlap)
+      {
+          player()->get<CTransform>().pos = mouseWorldPos;
+          player()->get<CInput>().teleportCooldown = 180;
+      }
+  }
 }
 
 void Scene_Zelda::sDoAction(const Action &action) {
@@ -475,6 +510,8 @@ void Scene_Zelda::chaseHelper(Entity* npc, Vec2f desiredPos) {
 
 void Scene_Zelda::sStatus() 
 {
+    //TODO add different potions and their effects
+  
     // invinvibility frames
     if (!player()->get<CInvincibility>().exists) {}
     else if (player()->get<CInvincibility>().exists && player()->get<CInvincibility>().iframes > 0) { player()->get<CInvincibility>().iframes--; }

@@ -6,6 +6,7 @@ class Scene_Zelda : public Scene
 	{
 		float X, Y, BX, BY, SPEED, HEALTH;
 		int HP, SPP, STP, INVINCP, INVISP;
+		bool isVisible;
 	};
 	struct NPCConfig
 	{
@@ -37,7 +38,6 @@ protected:
 	void sCamera();
 	void sAnimation();
 	void sMovement();
-	void sDash();
 	void sCollision();
 	void sGUI();
 	void sRender();
