@@ -22,7 +22,7 @@ class Scene_Zelda : public Scene
 	};
 	struct BulletConfig 
 	{ 
-		int L; float S; 
+		int L; float S; bool fromPlayer;
 	};
 
 public:

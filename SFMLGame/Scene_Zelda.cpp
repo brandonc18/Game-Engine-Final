@@ -342,6 +342,7 @@ void Scene_Zelda::spawnBullet(Entity* entity)
     //bullet if entity is the player
     if (entity->tag() == "player")
     {
+        bullet->get<CInput>().fromPlayer == true;
         float speed = bulletConfig.S;
         Vec2f diffD = Vec2f(mouseWorldPos.x - player()->get<CTransform>().pos.x, mouseWorldPos.y - player()->get<CTransform>().pos.y);
         float distance = player()->get<CTransform>().pos.dist(mouseWorldPos);
@@ -352,6 +353,7 @@ void Scene_Zelda::spawnBullet(Entity* entity)
     }
     else if (entity->tag() == "npc")
     {
+        bullet->get<CInput>().fromPlayer == false;
         float speed = bulletConfig.S;
         Vec2f diffD = Vec2f(player()->get<CTransform>().pos.x - entity->get<CTransform>().pos.x, player()->get<CTransform>().pos.y - entity->get<CTransform>().pos.y);
         float distance = entity->get<CTransform>().pos.dist(player()->get<CTransform>().pos);
@@ -869,6 +871,73 @@ void Scene_Zelda::sCollision() {
           }
       }
   }
+
+  //Collision checks for Bullets
+  for (int i = 0; i < entityManager.getEntities().size(); i++)
+  {
+      if (entityManager.getEntities()[i]->tag() == "bullet")
+      {
+          //check collisions
+          for (int j = 0; j < entityManager.getEntities().size(); j++)
+          {
+              //setup variable for player's collision box
+              entityABox = entityManager.getEntities()[i]->get<CBoundingBox>().size;
+              entityAPos = entityManager.getEntities()[i]->get<CTransform>().pos;
+              //setup variables for the other entities collision box
+              entityBBox = entityManager.getEntities()[j]->get<CBoundingBox>().size;
+              entityBPos = entityManager.getEntities()[j]->get<CTransform>().pos;
+              //the collision bool will always start as false
+              bool collides = false;
+              //get the distance between the positions of the entities on the x and y axis
+              float distanceX = abs(entityBPos.x - entityAPos.x);
+              float distanceY = abs(entityBPos.y - entityAPos.y);
+              //set overlaps here instead of only when it collides to set the num of tiles under the player
+              overlap = Physics::GetOverlap(entityManager.getEntities()[i], entityManager.getEntities()[j]);
+              prevOverlap = Physics::GetPreviousOverlap(entityManager.getEntities()[i], entityManager.getEntities()[j]);
+              if (overlap.x > 0 && overlap.y > 0 && entityManager.getEntities()[j]->tag() != "bullet" && entityManager.getEntities()[j]->get<CBoundingBox>().exists)
+              {
+                  collides = true;
+              }
+              else {}
+
+              if (collides && entityManager.getEntities()[j]->tag() == "tile" && entityManager.getEntities()[j]->get<CBoundingBox>().blockMove == true)
+              {
+                  entityManager.getEntities()[i]->destroy();
+              }
+              else if (collides && entityManager.getEntities()[j]->tag() == "npc")
+              {
+                  if (entityManager.getEntities()[j]->get<CHealth>().exists && entityManager.getEntities()[i]->get<CDamage>().exists)
+                  {
+                      entityManager.getEntities()[j]->get<CHealth>().current -= entityManager.getEntities()[i]->get<CDamage>().damage;
+                      entityManager.getEntities()[i]->get<CDamage>().exists = false;
+                      entityManager.getEntities()[i]->destroy();
+                      game->getAssets().getSound("EnemyHit").play();
+                  }
+                  if (entityManager.getEntities()[j]->get<CHealth>().current <= 0)
+                  {
+                      entityManager.getEntities()[j]->destroy();
+                      game->getAssets().getSound("EnemyDie").play();
+                  }
+              }
+              else if (collides && entityManager.getEntities()[j]->tag() == "npc")
+              {
+                  if (entityManager.getEntities()[j]->get<CHealth>().exists && entityManager.getEntities()[i]->get<CDamage>().exists)
+                  {
+                      entityManager.getEntities()[j]->get<CHealth>().current -= entityManager.getEntities()[i]->get<CDamage>().damage;
+                      entityManager.getEntities()[i]->get<CDamage>().exists = false;
+                      entityManager.getEntities()[i]->destroy();
+                      game->getAssets().getSound("EnemyHit").play();
+                  }
+                  if (entityManager.getEntities()[j]->get<CHealth>().current <= 0)
+                  {
+                      entityManager.getEntities()[j]->destroy();
+                      game->getAssets().getSound("EnemyDie").play();
+                  }
+              }
+          }
+      }
+  }
+
   //Collision checks for NPC's
   for (int i = 0; i < entityManager.getEntities().size(); i++)
   {
