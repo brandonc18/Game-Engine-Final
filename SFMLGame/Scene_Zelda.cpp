@@ -400,6 +400,7 @@ void Scene_Zelda::update() {
   else
   {
       sGUI();
+      sPausedGUI();
       sRender();
   }
   currentFrame++;
@@ -1323,6 +1324,48 @@ void Scene_Zelda::sGUI() {
     }
     ImGui::EndTabBar();
   }
+}
+
+void Scene_Zelda::sPausedGUI() {
+    // quit, resume, save, main menu
+    if (paused) {
+        // Center the window on the screen
+        ImVec2 screenSize = ImGui::GetIO().DisplaySize;
+        ImVec2 windowSize = ImVec2(300, 200);
+        ImVec2 windowPos = ImVec2((screenSize.x - windowSize.x) / 2, (screenSize.y - windowSize.y) / 2);
+        ImGui::SetNextWindowPos(windowPos, ImGuiCond_Once);
+        ImGui::SetNextWindowSize(windowSize, ImGuiCond_Once);
+
+        ImGui::Begin("Pause Menu", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
+        ImGui::Text("Paused");
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 20));
+
+        float windowWidth = ImGui::GetWindowWidth();
+        float buttonWidth = 200.0f;
+        // Resume
+        ImGui::SetCursorPosX((windowWidth - buttonWidth) / 2.0f);
+        if (ImGui::Button("Resume", ImVec2(buttonWidth, 0))) {
+            paused = false;
+        }
+        // Save
+        ImGui::SetCursorPosX((windowWidth - buttonWidth) / 2.0f);
+        if (ImGui::Button("Save", ImVec2(buttonWidth, 0))) {
+            saveLevel();
+        }
+        // Main Menu
+        ImGui::SetCursorPosX((windowWidth - buttonWidth) / 2.0f);
+        if (ImGui::Button("Return to Main Menu", ImVec2(buttonWidth, 0))) {
+            onEnd();
+        }
+        // Quit
+        ImGui::SetCursorPosX((windowWidth - buttonWidth) / 2.0f);
+        if (ImGui::Button("Quit", ImVec2(buttonWidth, 0))) {
+            game->quit();
+        }
+
+        ImGui::PopStyleVar();
+        ImGui::End();
+    }
 }
 
 void Scene_Zelda::drawLine(Vec2f p1, Vec2f p2) {

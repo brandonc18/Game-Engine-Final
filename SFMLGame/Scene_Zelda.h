@@ -45,6 +45,7 @@ protected:
 	void sMovement();
 	void sCollision();
 	void sGUI();
+	void sPausedGUI();
 	void sRender();
 	void onEnd();
 
