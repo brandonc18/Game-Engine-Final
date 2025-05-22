@@ -14,6 +14,7 @@ protected:
 	void onEnd();
 	void sRender();
 	void sDoAction(const Action& action);
+	void loadMenuBackground();
 
 	vector<string> menuStrings;
 	vector<string> levelPaths;

@@ -41,6 +41,7 @@ protected:
 	void sDash();
 	void sCollision();
 	void sGUI();
+	void sPausedGUI();
 	void sRender();
 	void onEnd();
 
