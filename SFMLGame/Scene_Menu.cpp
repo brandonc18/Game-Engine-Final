@@ -37,8 +37,8 @@ void Scene_Menu::init()
 	levelPaths.push_back("Level2.json");
 	levelPaths.push_back("Level3.json");
 
-	game->getAssets().getSound("Title").play();
-	game->getAssets().getSound("Title").setLoop(1);
+	game->getAssets().getSound("Music2").play();
+	game->getAssets().getSound("Music2").setLoop(1);
 }
 
 void Scene_Menu::update()
