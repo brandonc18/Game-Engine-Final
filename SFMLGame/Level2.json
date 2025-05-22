@@ -22,7 +22,9 @@
                     "y": 64.0
                 },
                 {
-                    "exists": false,
+                    "current": 10,
+                    "exists": true,
+                    "max": 10,
                     "type": "CHealth"
                 },
                 {
@@ -4303,7 +4305,8 @@
                     "type": "CHealth"
                 },
                 {
-                    "exists": false,
+                    "damage": 1,
+                    "exists": true,
                     "type": "CDamage"
                 },
                 {
@@ -4546,7 +4549,8 @@
                     "type": "CHealth"
                 },
                 {
-                    "exists": false,
+                    "damage": 1,
+                    "exists": true,
                     "type": "CDamage"
                 },
                 {
@@ -4604,7 +4608,8 @@
                     "type": "CHealth"
                 },
                 {
-                    "exists": false,
+                    "damage": 1,
+                    "exists": true,
                     "type": "CDamage"
                 },
                 {
@@ -6282,7 +6287,8 @@
                     "type": "CHealth"
                 },
                 {
-                    "exists": false,
+                    "damage": 1,
+                    "exists": true,
                     "type": "CDamage"
                 },
                 {
@@ -6329,7 +6335,8 @@
                     "type": "CHealth"
                 },
                 {
-                    "exists": false,
+                    "damage": 1,
+                    "exists": true,
                     "type": "CDamage"
                 },
                 {
@@ -10431,7 +10438,8 @@
                     "type": "CHealth"
                 },
                 {
-                    "exists": false,
+                    "damage": 2,
+                    "exists": true,
                     "type": "CDamage"
                 },
                 {
@@ -10472,8 +10480,8 @@
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "type": "CTransform",
-                    "x": -800.0,
-                    "y": 224.0
+                    "x": -794.0,
+                    "y": 185.00001525878906
                 },
                 {
                     "name": "DarkBrickWall2",
@@ -10508,7 +10516,7 @@
                     "type": "CInput"
                 }
             ],
-            "id": 233,
+            "id": 231,
             "tag": "tile"
         },
         {
@@ -10517,8 +10525,8 @@
                     "scaleX": 1.0,
                     "scaleY": 1.0,
                     "type": "CTransform",
-                    "x": -800.0,
-                    "y": 480.0
+                    "x": -814.0,
+                    "y": 645.0
                 },
                 {
                     "name": "DarkBrickWall2",
@@ -10553,52 +10561,7 @@
                     "type": "CInput"
                 }
             ],
-            "id": 234,
-            "tag": "tile"
-        },
-        {
-            "components": [
-                {
-                    "scaleX": 1.0,
-                    "scaleY": 1.0,
-                    "type": "CTransform",
-                    "x": -800.0,
-                    "y": 352.0
-                },
-                {
-                    "name": "DarkBrickWall2",
-                    "type": "CAnimation"
-                },
-                {
-                    "exists": true,
-                    "move": true,
-                    "type": "CBoundingBox",
-                    "vision": true,
-                    "x": 64.0,
-                    "y": 128.0
-                },
-                {
-                    "exists": false,
-                    "type": "CHealth"
-                },
-                {
-                    "exists": false,
-                    "type": "CDamage"
-                },
-                {
-                    "exists": false,
-                    "type": "CChasePlayer"
-                },
-                {
-                    "exists": false,
-                    "type": "CPatrol"
-                },
-                {
-                    "exists": false,
-                    "type": "CInput"
-                }
-            ],
-            "id": 235,
+            "id": 232,
             "tag": "tile"
         },
         {
@@ -10643,7 +10606,7 @@
                     "type": "CInput"
                 }
             ],
-            "id": 236,
+            "id": 233,
             "tag": "tile"
         },
         {
@@ -10688,7 +10651,7 @@
                     "type": "CInput"
                 }
             ],
-            "id": 237,
+            "id": 234,
             "tag": "tile"
         }
     ]
