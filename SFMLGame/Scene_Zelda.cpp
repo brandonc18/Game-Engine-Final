@@ -302,7 +302,7 @@ void Scene_Zelda::spawnSword(Entity *entity) {
     // Find the direction the player is facing to determine attack direction
     // up
     if (playerState.find("Up") != string::npos) {
-        player()->get<CState>().state = "HeroAttackFront";
+        player()->get<CState>().state = "HeroAttackBack";
         sword->get<CState>().state = "Longsword";
         sword->get<CTransform>().pos.y -= gridSize.x;
     }
@@ -322,7 +322,7 @@ void Scene_Zelda::spawnSword(Entity *entity) {
     // down
     else {
         sword->get<CTransform>().scale.y = -1;
-        player()->get<CState>().state = "HeroAttackBack";
+        player()->get<CState>().state = "HeroAttackFront";
         sword->get<CState>().state = "Longsword";
         sword->get<CTransform>().pos.y += gridSize.y;
     }
@@ -712,23 +712,23 @@ void Scene_Zelda::sStatus()
             {
                 entityManager.getEntities()[i]->get<CLifespan>().remaining -= 1;
             }
-            else if (entityManager.getEntities()[i]->get<CAnimation>().animation.getName().find("Sword") != string::npos)
+            else if (entityManager.getEntities()[i]->get<CAnimation>().animation.getName().find("sword") != string::npos)
             {
                 entityManager.getEntities()[i]->destroy();
                 player()->get<CInput>().attack = false;
                 player()->get<CInput>().canAttack = true;
                 player()->get<CInput>().canRun = true;
-                if (entityManager.getEntities()[i]->get<CAnimation>().animation.getName() == "SwordDown")
+                if (entityManager.getEntities()[i]->get<CAnimation>().animation.getName() == "LongswordDown")
                 {
-                    player()->get<CState>().state = "StandDown";
+                    player()->get<CState>().state = "HeroIdleDown";
                 }
-                else if (entityManager.getEntities()[i]->get<CAnimation>().animation.getName() == "SwordUp")
+                else if (entityManager.getEntities()[i]->get<CAnimation>().animation.getName() == "LongswordUp")
                 {
-                    player()->get<CState>().state = "StandUp";
+                    player()->get<CState>().state = "HeroIdleUp";
                 }
                 else
                 {
-                    player()->get <CState>().state = "StandRight";
+                    player()->get <CState>().state = "HeroIdleSide";
                 }
             }
             else
