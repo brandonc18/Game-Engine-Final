@@ -7,6 +7,7 @@
 #include "GameEngine.h"
 #include "Physics.h"
 #include "Scene_Menu.h"
+#include "Scene_End.h"
 #include <SFML/OpenGL.hpp>
 #include "imgui/imgui-SFML.h"
 #include "imgui/imgui.h"
@@ -405,6 +406,7 @@ void Scene_Zelda::update() {
   {
       sGUI();
       sPausedGUI();
+      hudGUI();
       sRender();
   }
   currentFrame++;
@@ -701,6 +703,10 @@ void Scene_Zelda::sStatus()
 {
     //TODO add different potions and their effects
   
+    if (entityManager.getEntities("npc").size() == 0) {
+        game->changeScene("MENU", new Scene_End(game), true);
+    }
+
     // invinvibility frames
     if (!player()->get<CInvincibility>().exists) {}
     else if (player()->get<CInvincibility>().exists && player()->get<CInvincibility>().iframes > 0) { player()->get<CInvincibility>().iframes--; }
@@ -1532,6 +1538,25 @@ void Scene_Zelda::sPausedGUI() {
         ImGui::PopStyleVar();
         ImGui::End();
     }
+}
+
+void Scene_Zelda::hudGUI() {
+    // Potion HUD window
+    ImVec2 screenSize = ImGui::GetIO().DisplaySize;
+    ImVec2 hudSize(200, 50); // Adjust size as needed
+    ImVec2 hudPos((screenSize.x - hudSize.x) / 2, screenSize.y - hudSize.y - 10); // Bottom center, 10px margin
+    ImGui::SetNextWindowPos(hudPos, ImGuiCond_Always);
+    ImGui::SetNextWindowSize(hudSize, ImGuiCond_Always);
+
+    ImGui::Begin("Potion HUD", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar);
+    // Display potion image
+    GLuint textureID = potionTexture.getNativeHandle();
+    ImTextureID imguiTextureID = (void*)(intptr_t)textureID;
+    ImGui::Image(imguiTextureID, ImVec2(32, 32)); // Adjust size as needed
+    ImGui::SameLine();
+    // Display potion count
+    ImGui::Text("Potions: %d", playerConfig.HP);
+    ImGui::End();
 }
 
 void Scene_Zelda::drawLine(Vec2f p1, Vec2f p2) {
