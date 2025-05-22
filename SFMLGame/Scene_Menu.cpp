@@ -18,18 +18,19 @@ void Scene_Menu::init()
 	registerAction(sf::Keyboard::Space, "PLAY");
 	registerAction(sf::Keyboard::Escape, "QUIT");
 	registerAction(sf::Keyboard::E, "EDIT");
-	registerAction(sf::Keyboard::T, "TEST");
 
-	title = "Strange Zelda";
+	title = "Strange Dungeon";
 	menuText.setCharacterSize(36);
 	menuText.setFont(game->getAssets().getFont("Techfont"));
 
+	menuStrings.push_back("Continue Level");
 	menuStrings.push_back("Level 1");
 	menuStrings.push_back("Level 2");
 	menuStrings.push_back("Level 3");
+	levelPaths.push_back("Continue.json");
 	levelPaths.push_back("Level1.json");
-	levelPaths.push_back("LevelEdited.json");
-	levelPaths.push_back("LevelEditor.json");
+	levelPaths.push_back("Level2.json");
+	levelPaths.push_back("Level3.json");
 
 	game->getAssets().getSound("Title").play();
 	game->getAssets().getSound("Title").setLoop(1);
@@ -61,12 +62,7 @@ void Scene_Menu::sDoAction(const Action& action)
 		else if (action.getName() == "EDIT") 
 		{
 			game->getAssets().getSound("Title").stop();
-			game->changeScene("EDIT", new Scene_LevelEditor(game, "LevelEditor.json"));
-		}
-		else if (action.getName() == "TEST")
-		{
-			game->getAssets().getSound("Title").stop();
-			game->changeScene("PLAY", new Scene_Zelda(game, "LevelEditor.json"));
+			game->changeScene("EDIT", new Scene_LevelEditor(game, levelPaths[selectedMenuIndex]));
 		}
 		else if (action.getName() == "QUIT")
 		{

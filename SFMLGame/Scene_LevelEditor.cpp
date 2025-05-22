@@ -170,7 +170,7 @@ void Scene_LevelEditor::outputJSONFile()
 	}
 
 	ofstream fout;
-	fout.open("LevelEditor.json");
+	fout.open(levelPath);
 	fout << j.dump(4);
 	fout.close();
 	cout << "Output JSON" << endl;

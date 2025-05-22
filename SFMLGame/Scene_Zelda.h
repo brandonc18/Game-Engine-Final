@@ -29,6 +29,7 @@ protected:
 	Entity* player();
 	void loadLevelJSON(const string& filename);
 	void loadLevel(const string& filename);
+	void saveLevel();
 	void sDoAction(const Action& action);
 	void patrolAI(Entity* npc);
 	void chaseHelper(Entity* npc, Vec2f desiredPos);
