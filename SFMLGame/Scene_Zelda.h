@@ -45,6 +45,7 @@ protected:
 	void sMovement();
 	void sCollision();
 	void sGUI();
+	void hudGUI();
 	void sPausedGUI();
 	void sRender();
 	void onEnd();
@@ -70,5 +71,6 @@ protected:
 	bool hitPortalLastFrame = false;
 	const Vec2f gridSize = { 64,64 };
 	sf::Text gridText;
+	sf::Texture potionTexture;
 };
 

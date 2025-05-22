@@ -7,6 +7,7 @@
 #include "GameEngine.h"
 #include "Physics.h"
 #include "Scene_Menu.h"
+#include "Scene_End.h"
 #include <SFML/OpenGL.hpp>
 #include "imgui/imgui-SFML.h"
 #include "imgui/imgui.h"
@@ -97,8 +98,15 @@ void Scene_Zelda::loadLevelJSON(const string& filename)
         {
             e->add<CInput>(j["entities"][i]["components"][7]["speed"]);
         }
-        if (e->tag() == "player")
+        if (e->tag() == "player") {
             e->add<CState>();
+            playerConfig.X = e->get<CTransform>().pos.x;
+            playerConfig.Y = e->get<CTransform>().pos.y;
+            playerConfig.BX = 0;
+            playerConfig.BY = 0;
+            playerConfig.SPEED = e->get<CInput>().speed;
+            playerConfig.HEALTH = e->get<CHealth>().max;
+        }
     }
 
     //instantiate the bullet config
@@ -277,12 +285,6 @@ Vec2f Scene_Zelda::getPosition(int rx, int ry, int tx, int ty) const {
 }
 
 void Scene_Zelda::spawnPlayer() {
-  // here is a sample player entity which you can use to contruct other entities
-    playerConfig.X = player()->get<CTransform>().pos.x;
-    playerConfig.Y = player()->get<CTransform>().pos.y;
-    playerConfig.BY = 0;
-    playerConfig.BX = 0;
-    playerConfig.SPEED = player()->get<CInput>().speed;
   auto player = entityManager.addEntity("player");
   player->add<CAnimation>(game->getAssets().getAnimation("HeroIdleDown"), true);
   player->add<CTransform>(Vec2f(playerConfig.X, playerConfig.Y));
@@ -319,7 +321,7 @@ void Scene_Zelda::spawnSword(Entity *entity) {
         sword->get<CTransform>().pos.x -= gridSize.x;
     }
     // right
-    else if (playerState.find("Right") != string::npos) {
+    else if (playerState.find("Side") != string::npos) {
         player()->get<CState>().state = "HeroAttackSide";
         sword->get<CState>().state = "LongswordSide";
         sword->get<CTransform>().pos.x += gridSize.y;
@@ -334,7 +336,7 @@ void Scene_Zelda::spawnSword(Entity *entity) {
     sword->add<CAnimation>(game->getAssets().getAnimation(sword->get<CState>().state), true);
     sword->add<CBoundingBox>(game->getAssets().getAnimation(sword->get<CState>().state).getSize());
     sword->add<CLifespan>(10);
-    sword->add<CDamage>(1);
+    sword->add<CDamage>(3);
     game->getAssets().getSound("Slash").play();
     player()->get<CInput>().canRun = false;
 }
@@ -404,6 +406,7 @@ void Scene_Zelda::update() {
   {
       sGUI();
       sPausedGUI();
+      hudGUI();
       sRender();
   }
   currentFrame++;
@@ -700,6 +703,10 @@ void Scene_Zelda::sStatus()
 {
     //TODO add different potions and their effects
   
+    if (entityManager.getEntities("npc").size() == 0) {
+        game->changeScene("MENU", new Scene_End(game), true);
+    }
+
     // invinvibility frames
     if (!player()->get<CInvincibility>().exists) {}
     else if (player()->get<CInvincibility>().exists && player()->get<CInvincibility>().iframes > 0) { player()->get<CInvincibility>().iframes--; }
@@ -1531,6 +1538,25 @@ void Scene_Zelda::sPausedGUI() {
         ImGui::PopStyleVar();
         ImGui::End();
     }
+}
+
+void Scene_Zelda::hudGUI() {
+    // Potion HUD window
+    ImVec2 screenSize = ImGui::GetIO().DisplaySize;
+    ImVec2 hudSize(200, 50); // Adjust size as needed
+    ImVec2 hudPos((screenSize.x - hudSize.x) / 2, screenSize.y - hudSize.y - 10); // Bottom center, 10px margin
+    ImGui::SetNextWindowPos(hudPos, ImGuiCond_Always);
+    ImGui::SetNextWindowSize(hudSize, ImGuiCond_Always);
+
+    ImGui::Begin("Potion HUD", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar);
+    // Display potion image
+    GLuint textureID = potionTexture.getNativeHandle();
+    ImTextureID imguiTextureID = (void*)(intptr_t)textureID;
+    ImGui::Image(imguiTextureID, ImVec2(32, 32)); // Adjust size as needed
+    ImGui::SameLine();
+    // Display potion count
+    ImGui::Text("Potions: %d", playerConfig.HP);
+    ImGui::End();
 }
 
 void Scene_Zelda::drawLine(Vec2f p1, Vec2f p2) {
