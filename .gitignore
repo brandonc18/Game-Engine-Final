@@ -33,7 +33,5 @@ SFMLGame/imgui.ini
 *.tlog
 *.tlog
 SFMLGame/x64/Release/SFMLGame.tlog/CL.write.1.tlog
-*.json
-*.json
 x64/Release/SFMLGame.exe
 .vs/SFMLGame/v17/Browse.VC.db
