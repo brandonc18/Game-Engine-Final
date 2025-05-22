@@ -320,7 +320,7 @@ void Scene_Zelda::spawnSword(Entity *entity) {
         sword->get<CTransform>().pos.x -= gridSize.x;
     }
     // right
-    else if (playerState.find("Right") != string::npos) {
+    else if (playerState.find("Side") != string::npos) {
         player()->get<CState>().state = "HeroAttackSide";
         sword->get<CState>().state = "LongswordSide";
         sword->get<CTransform>().pos.x += gridSize.y;
@@ -335,7 +335,7 @@ void Scene_Zelda::spawnSword(Entity *entity) {
     sword->add<CAnimation>(game->getAssets().getAnimation(sword->get<CState>().state), true);
     sword->add<CBoundingBox>(game->getAssets().getAnimation(sword->get<CState>().state).getSize());
     sword->add<CLifespan>(10);
-    sword->add<CDamage>(1);
+    sword->add<CDamage>(3);
     game->getAssets().getSound("Slash").play();
     player()->get<CInput>().canRun = false;
 }
